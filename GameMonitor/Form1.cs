@@ -65,5 +65,11 @@ namespace GameMonitor
             OpenFileDialog ofg = new OpenFileDialog();
             ofg.ShowDialog();
         }
+
+        private void loadUserFileBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofg = new OpenFileDialog();
+            ofg.ShowDialog();
+        }
     }
 }

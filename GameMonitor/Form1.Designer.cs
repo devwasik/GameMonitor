@@ -44,6 +44,8 @@
             this.playingLbl = new System.Windows.Forms.Label();
             this.userLbl = new System.Windows.Forms.Label();
             this.appStatusLbl = new System.Windows.Forms.Label();
+            this.loadUserFileBtn = new System.Windows.Forms.Button();
+            this.appHeaderLbl = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -151,6 +153,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox1.Controls.Add(this.loadUserFileBtn);
             this.groupBox1.Controls.Add(this.playingLbl);
             this.groupBox1.Controls.Add(this.userLbl);
             this.groupBox1.Controls.Add(this.appStatusLbl);
@@ -195,12 +198,35 @@
             this.appStatusLbl.Size = new System.Drawing.Size(0, 17);
             this.appStatusLbl.TabIndex = 5;
             // 
+            // loadUserFileBtn
+            // 
+            this.loadUserFileBtn.Location = new System.Drawing.Point(184, 14);
+            this.loadUserFileBtn.Name = "loadUserFileBtn";
+            this.loadUserFileBtn.Size = new System.Drawing.Size(110, 23);
+            this.loadUserFileBtn.TabIndex = 8;
+            this.loadUserFileBtn.Text = "Load";
+            this.loadUserFileBtn.UseVisualStyleBackColor = true;
+            this.loadUserFileBtn.Click += new System.EventHandler(this.loadUserFileBtn_Click);
+            // 
+            // appHeaderLbl
+            // 
+            this.appHeaderLbl.AutoSize = true;
+            this.appHeaderLbl.BackColor = System.Drawing.Color.Lime;
+            this.appHeaderLbl.Font = new System.Drawing.Font("Gabriola", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appHeaderLbl.ForeColor = System.Drawing.Color.GhostWhite;
+            this.appHeaderLbl.Location = new System.Drawing.Point(37, 85);
+            this.appHeaderLbl.Name = "appHeaderLbl";
+            this.appHeaderLbl.Size = new System.Drawing.Size(305, 110);
+            this.appHeaderLbl.TabIndex = 6;
+            this.appHeaderLbl.Text = "GameMonitor";
+            // 
             // GameMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(384, 585);
+            this.Controls.Add(this.appHeaderLbl);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.startStopBtn);
             this.Controls.Add(this.menuStrip1);
@@ -236,6 +262,8 @@
         private System.Windows.Forms.Label appStatusLbl;
         private System.Windows.Forms.Label userLbl;
         private System.Windows.Forms.Label playingLbl;
+        private System.Windows.Forms.Button loadUserFileBtn;
+        private System.Windows.Forms.Label appHeaderLbl;
     }
 }
 

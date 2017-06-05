@@ -56,6 +56,8 @@ namespace GameMonitor
             sfd.FileName = "";
             sfd.Title = "Create new user file";
             sfd.ShowDialog();
+            sfd.Dispose();
+            System.IO.File.WriteAllText(sfd.FileName + ".txt", "");
         }
 
         private void loadUserToolStripMenuItem_Click(object sender, EventArgs e)

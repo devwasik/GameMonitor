@@ -1,0 +1,18 @@
+c:\users\nick\documents\visual studio 2017\Projects\GameMonitor\GameMonitor\bin\Debug\GameMonitor.exe.config
+c:\users\nick\documents\visual studio 2017\Projects\GameMonitor\GameMonitor\bin\Debug\GameMonitor.exe
+c:\users\nick\documents\visual studio 2017\Projects\GameMonitor\GameMonitor\bin\Debug\GameMonitor.pdb
+c:\users\nick\documents\visual studio 2017\Projects\GameMonitor\GameMonitor\obj\Debug\GameMonitor.csprojResolveAssemblyReference.cache
+c:\users\nick\documents\visual studio 2017\Projects\GameMonitor\GameMonitor\obj\Debug\GameMonitor.GameMonitor.resources
+c:\users\nick\documents\visual studio 2017\Projects\GameMonitor\GameMonitor\obj\Debug\GameMonitor.Properties.Resources.resources
+c:\users\nick\documents\visual studio 2017\Projects\GameMonitor\GameMonitor\obj\Debug\GameMonitor.csproj.GenerateResource.Cache
+c:\users\nick\documents\visual studio 2017\Projects\GameMonitor\GameMonitor\obj\Debug\GameMonitor.exe
+c:\users\nick\documents\visual studio 2017\Projects\GameMonitor\GameMonitor\obj\Debug\GameMonitor.pdb
+C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\bin\Debug\GameMonitor.exe.config
+C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\bin\Debug\GameMonitor.exe
+C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\bin\Debug\GameMonitor.pdb
+C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\obj\Debug\GameMonitor.csprojResolveAssemblyReference.cache
+C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\obj\Debug\GameMonitor.GameMonitor.resources
+C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\obj\Debug\GameMonitor.Properties.Resources.resources
+C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\obj\Debug\GameMonitor.csproj.GenerateResource.Cache
+C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\obj\Debug\GameMonitor.exe
+C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\obj\Debug\GameMonitor.pdb

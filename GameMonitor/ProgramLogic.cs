@@ -55,6 +55,7 @@ namespace GameMonitor {
 			}
 		}
 
+
 		/// <summary>
 		/// Public property that holds the name of the currently running game.
 		/// </summary>
@@ -111,12 +112,10 @@ namespace GameMonitor {
 				while( ( line = sr.ReadLine() ) != null ) games.Add( line );
 			}
 
-			// Todo: Remove - this was just for testing the method with a breakpoint and make sure filepath was read
-			// Nick, I would keep a try/catch here just because the user might pick a file that you didn't plan for or that they
-			// don't have permission to read from, and then it will throw an exception.
+			
 			catch( Exception e )  {
 
-				Console.WriteLine( e );
+				Console.WriteLine( e ); //Need to generate exception window
 			}
 
 			/*

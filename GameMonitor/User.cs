@@ -1,4 +1,6 @@
-﻿/*
+﻿using System.Collections.Generic;
+
+/*
  * Copyright 2017 Nick Wasik
  *
  * NOTICE:  All information contained herein is, and remains the property of Nick Wasik
@@ -8,16 +10,50 @@
  * of this information or reproduction of this material is strictly forbidden unless prior written
  * permission is obtained from Nick Wasik.
  */
+
+
 namespace GameMonitor {
 
-	/// <summary>
-	/// May or may not use these. Haven't decided yet.
-	/// </summary>
 	class User {
+        private string filePath;
+        private List<string> games;
+        private List<string> hours;
 
-		/// <summary>Name if wanting to track user.</summary>
-		public string name;
-		/// <summary>Path for the users save file location.</summary>
-		public string path;
-	}
+        public string FilePath
+        {
+            get
+            {
+                return filePath;
+            }
+            set
+            {
+                filePath = value;
+            }
+        }
+
+
+        public List<string> Games
+        {
+            get
+            {
+                return games;
+            }
+            set
+            {
+                games = value;
+            }
+        }
+
+        public List<string> Hours
+        {
+            get
+            {
+                return hours;
+            }
+            set
+            {
+                hours = value;
+            }
+        }
+    }
 }

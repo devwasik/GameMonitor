@@ -1,4 +1,6 @@
-﻿/*
+﻿using System.IO;
+
+/*
  * Copyright 2017 Nick Wasik
  *
  * NOTICE:  All information contained herein is, and remains the property of Nick Wasik
@@ -14,20 +16,23 @@ namespace GameMonitor {
 	/// <summary>
 	/// File IO management helper class. Contains the info necessary to perform file operations.
 	/// </summary>
-	class FileIO {
+	class FileIO
+    {
 
-		private string fpath = " ";
+        public void LoadUserFile(string fpath)
+        {
+            User user = new User();
+            StreamReader sr = new StreamReader(fpath);
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                user.Games.Add(line);       //Games will only show up in the users log if they have played it before. Therefor, all games will have hours > 0
+                user.Hours.Add(line);       //Game hours will be entered after the games line
+            }
+        }
 
-		public string Fpath {
-			get {
-				return fpath;
-			}
-			set {
-				fpath = value;
-			}
-		}
-		//CheckGameExists()         //See if game is in the the users hours log yet - if not create a new entry
-		//StartLogHours             //Start logging time
-		//StopLoggingHours          //Stop logging time
-	}
+        //CheckGameExists()         //See if game is in the the users hours log yet - if not create a new entry
+        //StartLoggingHours             //Start logging time
+        //StopLoggingHours          //Stop logging time
+    }
 }

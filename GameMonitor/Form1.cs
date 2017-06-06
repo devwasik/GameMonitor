@@ -10,6 +10,7 @@
  */
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GameMonitor {
@@ -82,14 +83,38 @@ namespace GameMonitor {
 			ofg.ShowDialog();
 		}
 
-		/// <summary>
-		/// Event handler for LoadUserBtn.OnClick
-		/// </summary>
-		private void loadUserFileBtn_Click( object sender, EventArgs e ) {
-			OpenFileDialog ofg = new OpenFileDialog();
-			ofg.ShowDialog();
-		}
+        /// <summary>
+        /// Event handler for LoadUserBtn.OnClick
+        /// </summary>
+        private void loadUserFileBtn_Click(object sender, EventArgs e)
+        {
+            Stream fs = null;
+            OpenFileDialog ofg = new OpenFileDialog();
+
+            ofg.InitialDirectory = "c:\\";
+            ofg.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            ofg.FilterIndex = 2;
+            ofg.RestoreDirectory = true;
+
+            if (ofg.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((fs = ofg.OpenFile()) != null)
+                    {
+                        using (fs)
+                        {
+                            MessageBox.Show(File.ReadAllText(ofg.FileName));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error reading file. Error details: " + ex.Message);
+                }
+            }
+        }
+    }
+}
 
 		#endregion
-	}
-}

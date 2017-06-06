@@ -16,3 +16,12 @@ C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\obj\Debug\GameMonitor.Propert
 C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\obj\Debug\GameMonitor.csproj.GenerateResource.Cache
 C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\obj\Debug\GameMonitor.exe
 C:\Users\Nick\Google Drive\GameMonitor\GameMonitor\obj\Debug\GameMonitor.pdb
+C:\Users\Nick\Desktop\GameMonitor\GameMonitor\bin\Debug\GameMonitor.exe.config
+C:\Users\Nick\Desktop\GameMonitor\GameMonitor\bin\Debug\GameMonitor.exe
+C:\Users\Nick\Desktop\GameMonitor\GameMonitor\bin\Debug\GameMonitor.pdb
+C:\Users\Nick\Desktop\GameMonitor\GameMonitor\obj\Debug\GameMonitor.csprojResolveAssemblyReference.cache
+C:\Users\Nick\Desktop\GameMonitor\GameMonitor\obj\Debug\GameMonitor.GameMonitor.resources
+C:\Users\Nick\Desktop\GameMonitor\GameMonitor\obj\Debug\GameMonitor.Properties.Resources.resources
+C:\Users\Nick\Desktop\GameMonitor\GameMonitor\obj\Debug\GameMonitor.csproj.GenerateResource.Cache
+C:\Users\Nick\Desktop\GameMonitor\GameMonitor\obj\Debug\GameMonitor.exe
+C:\Users\Nick\Desktop\GameMonitor\GameMonitor\obj\Debug\GameMonitor.pdb

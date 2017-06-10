@@ -114,6 +114,16 @@ namespace GameMonitor {
                 }
             }
         }
+
+        private void editGamesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            editGamesPanel.Visible = true;
+        }
+
+        private void backBtn1_Click(object sender, EventArgs e)
+        {
+            editGamesPanel.Visible = false;
+        }
     }
 }
 

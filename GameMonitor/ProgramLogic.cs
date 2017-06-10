@@ -24,7 +24,8 @@ namespace GameMonitor {
 		#region Objects
 
 		/// <summary>List that will be built to hold all the process names in games.txt file.</summary>
-		private List<string> games = new List<string>();
+		private List<string> gameProcesses = new List<string>();
+        private List<string> gameName = new List<string>();
 
 		#endregion
 
@@ -83,7 +84,7 @@ namespace GameMonitor {
 		/// Path to the user's game list file.
 		/// Todo: Remove hardcoding, allow user to select a game list file.
 		/// </summary>
-		private string fpath = "C:\\Users\\Nick\\Desktop\\games.txt";
+		private string fpath = "C:\\Users\\Nick\\Desktop\\gameProcesses.txt";
 		/// <summary>Private flag indicating if a game is running or not. Default = False.</summary>
 		private bool playingGame = false;
 
@@ -98,7 +99,7 @@ namespace GameMonitor {
 		}
 
 		/// <summary>
-		/// Loads the list of games from the game list file.
+		/// Loads the list of gameProcesses from the game list file.
 		/// </summary>
 		/// <returns></returns>
 		public List<string> LoadGameList() {
@@ -108,22 +109,32 @@ namespace GameMonitor {
 				 * Create stream reader and read the whole file, line by line, adding each line to game list.
 				 */
 				StreamReader sr = new StreamReader(fpath);
-				string line;
-				while( ( line = sr.ReadLine() ) != null ) games.Add( line );
-			}
+                string line = "";
+
+                //Read each line and take the process name / game name seperated by commas
+                string[] csv;
+                csv = line.Split(',');
+                while ((line = sr.ReadLine()) != null) { 
+                    //First item in the line is the process name
+                    gameProcesses.Add(csv[0]);                  
+                    //After processName there is a comma then -> game name
+                    gameName.Add(csv[1]);
+                }
+            }
 
 			
 			catch( Exception e )  {
 
-				Console.WriteLine( e ); //Need to generate exception window
+				Console.WriteLine( e ); 
+                //Need to generate exception window
 			}
 
 			/*
 			 * todo: I don't think this needs to return anything.
-			 * The games var is visible to this whole class, and you don't ask for a
+			 * The gameProcesses var is visible to this whole class, and you don't ask for a
 			 * return value when you are calling this method from ProgramLogic constructor.
 			 */
-			return games;
+			return gameProcesses;
 		}
 
 		/// <summary>
@@ -135,7 +146,7 @@ namespace GameMonitor {
 			Process[] processCheck = Process.GetProcesses();
 
 			// Loop through each game.
-			for( int g = 0; g < games.Count; g++ ) {
+			for( int g = 0; g < gameProcesses.Count; g++ ) {
 
 				// Loop through each process.
 				foreach( Process process in processCheck ) {
@@ -143,8 +154,8 @@ namespace GameMonitor {
 					/*
 					 * If we get a match from a running process, set the current game and break out of loop.
 					 */
-					if( process.ProcessName == games[g] ) {
-						currentGame = games[g];
+					if( process.ProcessName == gameProcesses[g] ) {
+						currentGame = gameName[g];      
 						playingGame = true;
 						break;
 					}
@@ -172,6 +183,12 @@ namespace GameMonitor {
 			appRunning = "Stopped";
 			currentGame = " ";
 		}
+
+        ////Called from CheckProcesses method - if a game is found need to find the exact name of game instead of process name in the games.txt file 
+        //private void GetGameName(string zProcess)                   
+        //{
+
+        //}
 	}
 }
 

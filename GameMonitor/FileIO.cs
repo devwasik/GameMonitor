@@ -26,8 +26,8 @@ namespace GameMonitor {
             string line;
             while ((line = sr.ReadLine()) != null)
             {
-                user.Games.Add(line);       //Games will only show up in the users log if they have played it before. Therefor, all games will have hours > 0
-                user.Hours.Add(line);       //Game hours will be entered after the games line
+                user.Games.Add(line);       //Games will only show up in the users log if they have played it before. Therefor, all gameProcesses will have hours > 0
+                user.Hours.Add(line);       //Game hours will be entered after the gameProcesses line
             }
         }
 

@@ -16,80 +16,81 @@ using System.Windows.Forms;
 
 namespace GameMonitor {
 
-	public partial class GameMonitor : Form {
+    public partial class GameMonitor : Form {
 
+        /// <summary>Program processes and logic .</summary>
 		ProgramLogic p = new ProgramLogic();
+        /// <summary> User file manager.</summary>
         UserFile ufile = new UserFile();
-        /// <summary>Private Game file manager.</summary>
+        /// <summary>Game file manager.</summary>
         GameFile gfile = new GameFile();
-
-
 
         /// <summary>
         /// Default constructor. Initialize the form components and adjust component properties.
         /// </summary>
         public GameMonitor() {
 
-			InitializeComponent();
-
-			/*
+            InitializeComponent();
+            /*
 			 * Set the default status as paused and color appropriately.
 			 * todo: set the color of the text in the same place that you change the actual text (move to a property).
 			 */
-			appStatusLbl.ForeColor = Color.Red;
-			appStatusLbl.Text = "Paused";
+            appStatusLbl.ForeColor = Color.Red;
+            appStatusLbl.Text = "Paused";
             gameListLbl.Text = GameFile.BuildEditGamePanel();
-           
 
-		}
 
-		#region Event Handlers
+        }
 
-		/// <summary>
-		/// Event handler for StartStopBtn.OnClick
-		/// </summary>
-		private void startStopBtn_Click( object sender, EventArgs e ) {
-			if( p.AppRunning == false ) {
-				p.AppRunning = true;
-				startStopBtn.Text = "Stop";
-				appStatusLbl.ForeColor = Color.Green;
-				appStatusLbl.Text = "Running";
+        public void ExceptionHandler(string message, string stackTrace)
+        {
 
-				if( p.CurrentGame != " " ) {
-					playingLbl.Text = p.CurrentGame;
-				}
-			} else {
-				p.AppRunning = false;
-				startStopBtn.Text = "Start";
-				appStatusLbl.ForeColor = Color.Red;
-				appStatusLbl.Text = "Paused";
-			}
-		}
+            MessageBox.Show("A critical error has occured.\n\n ------------------------------\n\nMessage:\n\n" + message
+                + "\n\n\n ------------------------------\n Stack trace:\n\n" + stackTrace);
+        }
 
-		/// <summary>
-		/// Event handler for NewUserToolStripMenuItem.OnClick
-		/// </summary>
-		private void newUserToolStripMenuItem_Click( object sender, EventArgs e ) {
-			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.Filter = "Text File|*.txt";
-			sfd.FileName = "";
-			sfd.Title = "Create new user file";
-			sfd.ShowDialog();
-			sfd.Dispose();
-			System.IO.File.WriteAllText( sfd.FileName + ".txt", "" );
-		}
+        #region Event Handlers
 
-		/// <summary>
-		/// Event handler for LoadUserToolStripMenuItem.OnClick
-		/// </summary>
-		private void loadUserToolStripMenuItem_Click( object sender, EventArgs e ) {
-			OpenFileDialog ofg = new OpenFileDialog();
-			ofg.ShowDialog();
-		}
+        private void startStopBtn_Click(object sender, EventArgs e) {
+            if (p.AppRunning == false) {
+                p.AppRunning = true;
+                startStopBtn.Text = "Stop";
+                appStatusLbl.ForeColor = Color.Green;
+                appStatusLbl.Text = "Running";
 
-        /// <summary>
-        /// Event handler for LoadUserBtn.OnClick
-        /// </summary>
+                if (p.CurrentGame != " ") {
+                    playingLbl.Text = p.CurrentGame;
+                }
+            } else {
+                p.AppRunning = false;
+                startStopBtn.Text = "Start";
+                appStatusLbl.ForeColor = Color.Red;
+                appStatusLbl.Text = "Paused";
+            }
+        }
+
+        private void newUserToolStripMenuItem_Click(object sender, EventArgs e) {
+            try
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "Text File|*.txt";
+                sfd.FileName = "";
+                sfd.Title = "Create new user file";
+                sfd.ShowDialog();
+                sfd.Dispose();
+                System.IO.File.WriteAllText(sfd.FileName + ".txt", "");
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler(ex.Message, ex.StackTrace);
+            }
+        }
+
+        private void loadUserToolStripMenuItem_Click(object sender, EventArgs e) {
+            OpenFileDialog ofg = new OpenFileDialog();
+            ofg.ShowDialog();
+        }
+
         private void loadUserFileBtn_Click(object sender, EventArgs e)
         {
             Stream fs = null;
@@ -121,17 +122,20 @@ namespace GameMonitor {
 
         private void editGamesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            editGamesPanel.Visible = true; 
+            ResetView();
+            editGamesPanel.Visible = true;
         }
 
         private void backBtn1_Click(object sender, EventArgs e)
         {
             editGamesPanel.Visible = false;
+            homePanel.Visible = true;
         }
 
         private void addGameBtn_Click(object sender, EventArgs e)
         {
             addGamePanel.Visible = true;
+            homePanel.Visible = false;
         }
 
         private void backBtn_Click(object sender, EventArgs e)
@@ -150,7 +154,23 @@ namespace GameMonitor {
 
         private void addGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ResetView();
             addGamePanel.Visible = true;
+        }
+
+        
+        //Hide all panels
+        private void ResetView()
+        {
+            homePanel.Visible = false;
+            addGamePanel.Visible = false;
+            editGamesPanel.Visible = false;
+        }
+
+        private void homeBtn_Click(object sender, EventArgs e)
+        {
+            ResetView();
+            homePanel.Visible = true;
         }
     }
 }

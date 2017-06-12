@@ -48,7 +48,6 @@
             this.playingLbl = new System.Windows.Forms.Label();
             this.userLbl = new System.Windows.Forms.Label();
             this.appStatusLbl = new System.Windows.Forms.Label();
-            this.appHeaderLbl = new System.Windows.Forms.Label();
             this.editGamesPanel = new System.Windows.Forms.Panel();
             this.addGamePanel = new System.Windows.Forms.Panel();
             this.backBtn = new System.Windows.Forms.Button();
@@ -60,10 +59,15 @@
             this.addGameBtn = new System.Windows.Forms.Button();
             this.gameListLbl = new System.Windows.Forms.Label();
             this.backBtn1 = new System.Windows.Forms.Button();
+            this.homePanel = new System.Windows.Forms.Panel();
+            this.logo = new System.Windows.Forms.PictureBox();
+            this.homeBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.editGamesPanel.SuspendLayout();
             this.addGamePanel.SuspendLayout();
+            this.homePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -114,14 +118,14 @@
             // editGamesToolStripMenuItem
             // 
             this.editGamesToolStripMenuItem.Name = "editGamesToolStripMenuItem";
-            this.editGamesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editGamesToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.editGamesToolStripMenuItem.Text = "Edit Games";
             this.editGamesToolStripMenuItem.Click += new System.EventHandler(this.editGamesToolStripMenuItem_Click);
             // 
             // addGameToolStripMenuItem
             // 
             this.addGameToolStripMenuItem.Name = "addGameToolStripMenuItem";
-            this.addGameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addGameToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.addGameToolStripMenuItem.Text = "Add Game";
             this.addGameToolStripMenuItem.Click += new System.EventHandler(this.addGameToolStripMenuItem_Click);
             // 
@@ -196,7 +200,7 @@
             this.groupBox1.Controls.Add(this.playingTitleLbl);
             this.groupBox1.Controls.Add(this.userTitleLbl);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox1.Location = new System.Drawing.Point(31, 216);
+            this.groupBox1.Location = new System.Drawing.Point(16, 16);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(226, 123);
             this.groupBox1.TabIndex = 5;
@@ -239,19 +243,6 @@
             this.appStatusLbl.Size = new System.Drawing.Size(0, 13);
             this.appStatusLbl.TabIndex = 5;
             // 
-            // appHeaderLbl
-            // 
-            this.appHeaderLbl.AutoSize = true;
-            this.appHeaderLbl.BackColor = System.Drawing.Color.Lime;
-            this.appHeaderLbl.Font = new System.Drawing.Font("Gabriola", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appHeaderLbl.ForeColor = System.Drawing.Color.GhostWhite;
-            this.appHeaderLbl.Location = new System.Drawing.Point(28, 69);
-            this.appHeaderLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.appHeaderLbl.Name = "appHeaderLbl";
-            this.appHeaderLbl.Size = new System.Drawing.Size(245, 88);
-            this.appHeaderLbl.TabIndex = 6;
-            this.appHeaderLbl.Text = "GameMonitor";
-            // 
             // editGamesPanel
             // 
             this.editGamesPanel.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -259,7 +250,7 @@
             this.editGamesPanel.Controls.Add(this.addGameBtn);
             this.editGamesPanel.Controls.Add(this.gameListLbl);
             this.editGamesPanel.Controls.Add(this.backBtn1);
-            this.editGamesPanel.Location = new System.Drawing.Point(28, 181);
+            this.editGamesPanel.Location = new System.Drawing.Point(18, 181);
             this.editGamesPanel.Name = "editGamesPanel";
             this.editGamesPanel.Size = new System.Drawing.Size(245, 234);
             this.editGamesPanel.TabIndex = 7;
@@ -360,15 +351,44 @@
             this.backBtn1.UseVisualStyleBackColor = true;
             this.backBtn1.Click += new System.EventHandler(this.backBtn1_Click);
             // 
+            // homePanel
+            // 
+            this.homePanel.Controls.Add(this.groupBox1);
+            this.homePanel.Location = new System.Drawing.Point(15, 188);
+            this.homePanel.Name = "homePanel";
+            this.homePanel.Size = new System.Drawing.Size(261, 166);
+            this.homePanel.TabIndex = 8;
+            // 
+            // logo
+            // 
+            this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
+            this.logo.InitialImage = ((System.Drawing.Image)(resources.GetObject("logo.InitialImage")));
+            this.logo.Location = new System.Drawing.Point(15, 93);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(262, 50);
+            this.logo.TabIndex = 9;
+            this.logo.TabStop = false;
+            // 
+            // homeBtn
+            // 
+            this.homeBtn.Location = new System.Drawing.Point(201, 41);
+            this.homeBtn.Name = "homeBtn";
+            this.homeBtn.Size = new System.Drawing.Size(75, 23);
+            this.homeBtn.TabIndex = 10;
+            this.homeBtn.Text = "Home";
+            this.homeBtn.UseVisualStyleBackColor = true;
+            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
+            // 
             // GameMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(288, 475);
+            this.Controls.Add(this.homeBtn);
+            this.Controls.Add(this.logo);
             this.Controls.Add(this.editGamesPanel);
-            this.Controls.Add(this.appHeaderLbl);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.homePanel);
             this.Controls.Add(this.startStopBtn);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -384,6 +404,8 @@
             this.editGamesPanel.PerformLayout();
             this.addGamePanel.ResumeLayout(false);
             this.addGamePanel.PerformLayout();
+            this.homePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,7 +429,6 @@
         private System.Windows.Forms.Label userLbl;
         private System.Windows.Forms.Label playingLbl;
         private System.Windows.Forms.Button loadUserFileBtn;
-        private System.Windows.Forms.Label appHeaderLbl;
         private System.Windows.Forms.ToolStripMenuItem gamesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editGamesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addGameToolStripMenuItem;
@@ -422,6 +443,9 @@
         private System.Windows.Forms.TextBox gameProcessAddTxtBox;
         private System.Windows.Forms.TextBox gameNameAddTxtBox;
         private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.Panel homePanel;
+        private System.Windows.Forms.PictureBox logo;
+        private System.Windows.Forms.Button homeBtn;
     }
 }
 

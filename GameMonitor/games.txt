@@ -1,2 +1,2 @@
-Wow-64
-MagicDuels
+Wow-64, World of Warcraft
+MagicDuels, Magic Duels

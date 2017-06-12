@@ -73,12 +73,7 @@ namespace GameMonitor {
         private bool appRunning = false;
 		/// <summary>Title of the currently running game.</summary>
 		private string currentGame = " ";
-		/// <summary>
-		/// Path to the user's game list file.
-		/// Todo: Remove hardcoding, allow user to select a game list file.
-		/// </summary>
-	
-		/// <summary>Private flag indicating if a game is running or not. Default = False.</summary>
+        /// <summary>Private flag indicating if a game is running or not. Default = False.</summary>
 		private bool playingGame = false;
 
  
@@ -90,7 +85,7 @@ namespace GameMonitor {
         /// </summary>
         public ProgramLogic() {
             GameFile.LoadGameList();
-            GameFile.BuildEditGamePanel();
+            GameFile.BuildEditGamePanel();          
 		}
 
 		/// <summary>

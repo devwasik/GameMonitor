@@ -56,6 +56,14 @@ namespace GameMonitor {
 			}
 		}
 
+        public List<string> GameName
+        {
+            get
+            {
+                return gameName;
+            }
+        }
+
 
 		/// <summary>
 		/// Public property that holds the name of the currently running game.
@@ -72,12 +80,12 @@ namespace GameMonitor {
 			}
 		}
 
-		#endregion
+        #endregion
 
-		#region Values
+        #region Values
 
-		/// <summary>Current application running status. Default = Paused.</summary>
-		private string appRunning = "Paused";
+        /// <summary>Current application running status. Default = Paused.</summary>
+        private string appRunning = "Paused";
 		/// <summary>Title of the currently running game.</summary>
 		private string currentGame = " ";
 		/// <summary>
@@ -137,6 +145,16 @@ namespace GameMonitor {
 			return gameProcesses;
 		}
 
+        public string BuildEditGamePanel(List<string> games)
+        {
+            var text = "";
+            foreach (string g in games)
+            {
+                text += g.ToString() + "\n";
+            }
+            return text;
+        }
+
 		/// <summary>
 		/// Checks each running process to match to our user's game list.
 		/// </summary>
@@ -183,12 +201,6 @@ namespace GameMonitor {
 			appRunning = "Stopped";
 			currentGame = " ";
 		}
-
-        ////Called from CheckProcesses method - if a game is found need to find the exact name of game instead of process name in the games.txt file 
-        //private void GetGameName(string zProcess)                   
-        //{
-
-        //}
 	}
 }
 

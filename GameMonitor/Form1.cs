@@ -9,6 +9,7 @@
  * permission is obtained from Nick Wasik.
  */
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -24,6 +25,7 @@ namespace GameMonitor {
 		/// <summary>Private user information.</summary>
 		User user = new User();
 
+
 		/// <summary>
 		/// Default constructor. Initialize the form components and adjust component properties.
 		/// </summary>
@@ -37,6 +39,16 @@ namespace GameMonitor {
 			 */
 			appStatusLbl.ForeColor = Color.Red;
 			appStatusLbl.Text = p.AppRunning;
+
+            //Need a getter here to go through games.txt and files can be loaded into the gameEditPanel
+
+            //Just testing here -- delete this
+            List<string> test = new List<string>();
+            test.Add("Wow");
+            test.Add("adkfjasklj");
+            editGamesTxtBox.Text = p.BuildEditGamePanel(test);
+           
+
 		}
 
 		#region Event Handlers
@@ -123,6 +135,11 @@ namespace GameMonitor {
         private void backBtn1_Click(object sender, EventArgs e)
         {
             editGamesPanel.Visible = false;
+        }
+
+        private void editGamesTxtBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

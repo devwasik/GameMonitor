@@ -50,9 +50,8 @@
             this.appStatusLbl = new System.Windows.Forms.Label();
             this.appHeaderLbl = new System.Windows.Forms.Label();
             this.editGamesPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.backBtn1 = new System.Windows.Forms.Button();
+            this.editGamesTxtBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.editGamesPanel.SuspendLayout();
@@ -246,32 +245,13 @@
             // editGamesPanel
             // 
             this.editGamesPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.editGamesPanel.Controls.Add(this.editGamesTxtBox);
             this.editGamesPanel.Controls.Add(this.backBtn1);
-            this.editGamesPanel.Controls.Add(this.label2);
-            this.editGamesPanel.Controls.Add(this.label1);
             this.editGamesPanel.Location = new System.Drawing.Point(28, 181);
             this.editGamesPanel.Name = "editGamesPanel";
             this.editGamesPanel.Size = new System.Drawing.Size(245, 234);
             this.editGamesPanel.TabIndex = 7;
             this.editGamesPanel.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 115);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "THIS IS JUST FOR TESTING // ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 142);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Game file will be loaded here";
             // 
             // backBtn1
             // 
@@ -282,6 +262,15 @@
             this.backBtn1.Text = "Back";
             this.backBtn1.UseVisualStyleBackColor = true;
             this.backBtn1.Click += new System.EventHandler(this.backBtn1_Click);
+            // 
+            // editGamesTxtBox
+            // 
+            this.editGamesTxtBox.Location = new System.Drawing.Point(76, 95);
+            this.editGamesTxtBox.Name = "editGamesTxtBox";
+            this.editGamesTxtBox.Size = new System.Drawing.Size(100, 20);
+            this.editGamesTxtBox.TabIndex = 3;
+            this.editGamesTxtBox.Text = "gdrf";
+            this.editGamesTxtBox.TextChanged += new System.EventHandler(this.editGamesTxtBox_TextChanged);
             // 
             // GameMonitor
             // 
@@ -334,8 +323,7 @@
         private System.Windows.Forms.ToolStripMenuItem addGameToolStripMenuItem;
         private System.Windows.Forms.Panel editGamesPanel;
         private System.Windows.Forms.Button backBtn1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox editGamesTxtBox;
     }
 }
 

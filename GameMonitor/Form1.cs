@@ -18,18 +18,17 @@ namespace GameMonitor {
 
 	public partial class GameMonitor : Form {
 
-		/// <summary>Private FileIO manager.</summary>
-		FileIO file = new FileIO();
-		/// <summary>Private ProgramLogic manager.</summary>
 		ProgramLogic p = new ProgramLogic();
-		/// <summary>Private user information.</summary>
-		User user = new User();
+        UserFile ufile = new UserFile();
+        /// <summary>Private Game file manager.</summary>
+        GameFile gfile = new GameFile();
 
 
-		/// <summary>
-		/// Default constructor. Initialize the form components and adjust component properties.
-		/// </summary>
-		public GameMonitor() {
+
+        /// <summary>
+        /// Default constructor. Initialize the form components and adjust component properties.
+        /// </summary>
+        public GameMonitor() {
 
 			InitializeComponent();
 
@@ -38,15 +37,8 @@ namespace GameMonitor {
 			 * todo: set the color of the text in the same place that you change the actual text (move to a property).
 			 */
 			appStatusLbl.ForeColor = Color.Red;
-			appStatusLbl.Text = p.AppRunning;
-
-            //Need a getter here to go through games.txt and files can be loaded into the gameEditPanel
-
-            //Just testing here -- delete this
-            List<string> test = new List<string>();
-            test.Add("Wow");
-            test.Add("adkfjasklj");
-            editGamesTxtBox.Text = p.BuildEditGamePanel(test);
+			appStatusLbl.Text = "Paused";
+            gameListLbl.Text = GameFile.BuildEditGamePanel();
            
 
 		}
@@ -57,20 +49,20 @@ namespace GameMonitor {
 		/// Event handler for StartStopBtn.OnClick
 		/// </summary>
 		private void startStopBtn_Click( object sender, EventArgs e ) {
-			if( p.AppRunning == "Paused" ) {
-				p.AppRunning = "Running";
+			if( p.AppRunning == false ) {
+				p.AppRunning = true;
 				startStopBtn.Text = "Stop";
 				appStatusLbl.ForeColor = Color.Green;
-				appStatusLbl.Text = p.AppRunning;
+				appStatusLbl.Text = "Running";
 
 				if( p.CurrentGame != " " ) {
 					playingLbl.Text = p.CurrentGame;
 				}
 			} else {
-				p.AppRunning = "Paused";
+				p.AppRunning = false;
 				startStopBtn.Text = "Start";
 				appStatusLbl.ForeColor = Color.Red;
-				appStatusLbl.Text = p.AppRunning;
+				appStatusLbl.Text = "Paused";
 			}
 		}
 
@@ -129,7 +121,7 @@ namespace GameMonitor {
 
         private void editGamesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            editGamesPanel.Visible = true;
+            editGamesPanel.Visible = true; 
         }
 
         private void backBtn1_Click(object sender, EventArgs e)
@@ -137,9 +129,28 @@ namespace GameMonitor {
             editGamesPanel.Visible = false;
         }
 
-        private void editGamesTxtBox_TextChanged(object sender, EventArgs e)
+        private void addGameBtn_Click(object sender, EventArgs e)
         {
+            addGamePanel.Visible = true;
+        }
 
+        private void backBtn_Click(object sender, EventArgs e)
+        {
+            addGamePanel.Visible = false;
+        }
+
+        private void gameNameAddTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            string addGame;
+            string addProcess;
+
+            addGame = gameNameAddTxtBox.Text;
+            addProcess = gameProcessAddTxtBox.Text;
+        }
+
+        private void addGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addGamePanel.Visible = true;
         }
     }
 }

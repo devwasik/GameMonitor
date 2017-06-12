@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-/*
+﻿/*
  * Copyright 2017 Nick Wasik
  *
  * NOTICE:  All information contained herein is, and remains the property of Nick Wasik
@@ -11,23 +9,74 @@
  * permission is obtained from Nick Wasik.
  */
 
+using System.Collections.Generic;
+using System.IO;
+
+
 namespace GameMonitor {
 
 	/// <summary>
 	/// File IO management helper class. Contains the info necessary to perform file operations.
 	/// </summary>
-	class FileIO
+	class UserFile
     {
+        #region Variables
+
+        private string filePath;
+        private List<string> games;
+        private List<string> hours;
+
+        #endregion
+
+        #region Properties
+
+        public string FilePath
+        {
+            get
+            {
+                return filePath;
+            }
+            set
+            {
+                filePath = value;
+            }
+        }
+
+
+        public List<string> Games
+        {
+            get
+            {
+                return games;
+            }
+            set
+            {
+                games = value;
+            }
+        }
+
+        public List<string> Hours
+        {
+            get
+            {
+                return hours;
+            }
+            set
+            {
+                hours = value;
+            }
+        }
+        #endregion
+
 
         public void LoadUserFile(string fpath)
         {
-            User user = new User();
             StreamReader sr = new StreamReader(fpath);
             string line;
             while ((line = sr.ReadLine()) != null)
             {
-                user.Games.Add(line);       //Games will only show up in the users log if they have played it before. Therefor, all gameProcesses will have hours > 0
-                user.Hours.Add(line);       //Game hours will be entered after the gameProcesses line
+                Games.Add(line);       //Games will only show up in the users log if they have played it before. Therefor, all gameProcesses will have hours > 0
+                Hours.Add(line);       //Game hours will be entered after the gameProcesses line
             }
         }
 

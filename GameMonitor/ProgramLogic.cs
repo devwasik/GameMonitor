@@ -20,14 +20,7 @@ namespace GameMonitor {
 	/// Manages the background services thread that check system processes for running game applications.
 	/// </summary>
 	class ProgramLogic {
-
-		#region Objects
-
-		/// <summary>List that will be built to hold all the process names in games.txt file.</summary>
-		private List<string> gameProcesses = new List<string>();
-        private List<string> gameName = new List<string>();
-
-		#endregion
+	
 
 		#region Properties
 
@@ -36,7 +29,7 @@ namespace GameMonitor {
 		/// Valid values are "Paused" or "Running"
 		/// todo: I would suggest changing this to an enum.
 		/// </summary>
-		public string AppRunning {
+		public bool AppRunning {
 			get {
 				return appRunning;
 			}
@@ -46,7 +39,7 @@ namespace GameMonitor {
 				 * If the new value being set is "Running", perform the operations to enable the timer.
 				 * todo: Move all of the timer setup stuff to the Constructor, you only need to enable the timer here.
 				 */
-				if( appRunning == "Running" ) {
+				if( appRunning == true ) {
 					Timer timer = new Timer(5000);
 					timer.Interval = 5000;
 					timer.Elapsed += new ElapsedEventHandler( CheckProcesses );
@@ -55,14 +48,6 @@ namespace GameMonitor {
 				}
 			}
 		}
-
-        public List<string> GameName
-        {
-            get
-            {
-                return gameName;
-            }
-        }
 
 
 		/// <summary>
@@ -85,76 +70,34 @@ namespace GameMonitor {
         #region Values
 
         /// <summary>Current application running status. Default = Paused.</summary>
-        private string appRunning = "Paused";
+        private bool appRunning = false;
 		/// <summary>Title of the currently running game.</summary>
 		private string currentGame = " ";
 		/// <summary>
 		/// Path to the user's game list file.
 		/// Todo: Remove hardcoding, allow user to select a game list file.
 		/// </summary>
-		private string fpath = "C:\\Users\\Nick\\Desktop\\gameProcesses.txt";
+	
 		/// <summary>Private flag indicating if a game is running or not. Default = False.</summary>
 		private bool playingGame = false;
 
-		#endregion
+ 
 
-		/// <summary>
-		/// Default constructor. Here we will load game list text file via constructor and eventually a user file here as well
-		/// </summary>
-		public ProgramLogic() {
+        #endregion
 
-			LoadGameList();
+        /// <summary>
+        /// Default constructor. Here we will load game list text file via constructor and eventually a user file here as well
+        /// </summary>
+        public ProgramLogic() {
+            GameFile.LoadGameList();
+            GameFile.BuildEditGamePanel();
 		}
 
 		/// <summary>
 		/// Loads the list of gameProcesses from the game list file.
 		/// </summary>
 		/// <returns></returns>
-		public List<string> LoadGameList() {
-
-			try {
-				/*
-				 * Create stream reader and read the whole file, line by line, adding each line to game list.
-				 */
-				StreamReader sr = new StreamReader(fpath);
-                string line = "";
-
-                //Read each line and take the process name / game name seperated by commas
-                string[] csv;
-                csv = line.Split(',');
-                while ((line = sr.ReadLine()) != null) { 
-                    //First item in the line is the process name
-                    gameProcesses.Add(csv[0]);                  
-                    //After processName there is a comma then -> game name
-                    gameName.Add(csv[1]);
-                }
-            }
-
-			
-			catch( Exception e )  {
-
-				Console.WriteLine( e ); 
-                //Need to generate exception window
-			}
-
-			/*
-			 * todo: I don't think this needs to return anything.
-			 * The gameProcesses var is visible to this whole class, and you don't ask for a
-			 * return value when you are calling this method from ProgramLogic constructor.
-			 */
-			return gameProcesses;
-		}
-
-        public string BuildEditGamePanel(List<string> games)
-        {
-            var text = "";
-            foreach (string g in games)
-            {
-                text += g.ToString() + "\n";
-            }
-            return text;
-        }
-
+		
 		/// <summary>
 		/// Checks each running process to match to our user's game list.
 		/// </summary>
@@ -164,7 +107,7 @@ namespace GameMonitor {
 			Process[] processCheck = Process.GetProcesses();
 
 			// Loop through each game.
-			for( int g = 0; g < gameProcesses.Count; g++ ) {
+			for( int g = 0; g < GameFile.GameProcesses.Count; g++ ) {
 
 				// Loop through each process.
 				foreach( Process process in processCheck ) {
@@ -172,8 +115,8 @@ namespace GameMonitor {
 					/*
 					 * If we get a match from a running process, set the current game and break out of loop.
 					 */
-					if( process.ProcessName == gameProcesses[g] ) {
-						currentGame = gameName[g];      
+					if( process.ProcessName == GameFile.GameProcesses[g] ) {
+						currentGame = GameFile.GameName[g];      
 						playingGame = true;
 						break;
 					}
@@ -198,7 +141,7 @@ namespace GameMonitor {
 		private void StoppedPlaying() {
 
 			playingGame = false;
-			appRunning = "Stopped";
+			appRunning = false;
 			currentGame = " ";
 		}
 	}

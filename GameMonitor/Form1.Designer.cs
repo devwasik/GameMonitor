@@ -50,11 +50,20 @@
             this.appStatusLbl = new System.Windows.Forms.Label();
             this.appHeaderLbl = new System.Windows.Forms.Label();
             this.editGamesPanel = new System.Windows.Forms.Panel();
+            this.addGamePanel = new System.Windows.Forms.Panel();
+            this.backBtn = new System.Windows.Forms.Button();
+            this.addGameBtn1 = new System.Windows.Forms.Button();
+            this.processNameAddLbl = new System.Windows.Forms.Label();
+            this.gameNameAddLbl = new System.Windows.Forms.Label();
+            this.gameProcessAddTxtBox = new System.Windows.Forms.TextBox();
+            this.gameNameAddTxtBox = new System.Windows.Forms.TextBox();
+            this.addGameBtn = new System.Windows.Forms.Button();
+            this.gameListLbl = new System.Windows.Forms.Label();
             this.backBtn1 = new System.Windows.Forms.Button();
-            this.editGamesTxtBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.editGamesPanel.SuspendLayout();
+            this.addGamePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -105,15 +114,16 @@
             // editGamesToolStripMenuItem
             // 
             this.editGamesToolStripMenuItem.Name = "editGamesToolStripMenuItem";
-            this.editGamesToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.editGamesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editGamesToolStripMenuItem.Text = "Edit Games";
             this.editGamesToolStripMenuItem.Click += new System.EventHandler(this.editGamesToolStripMenuItem_Click);
             // 
             // addGameToolStripMenuItem
             // 
             this.addGameToolStripMenuItem.Name = "addGameToolStripMenuItem";
-            this.addGameToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.addGameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addGameToolStripMenuItem.Text = "Add Game";
+            this.addGameToolStripMenuItem.Click += new System.EventHandler(this.addGameToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -245,7 +255,9 @@
             // editGamesPanel
             // 
             this.editGamesPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.editGamesPanel.Controls.Add(this.editGamesTxtBox);
+            this.editGamesPanel.Controls.Add(this.addGamePanel);
+            this.editGamesPanel.Controls.Add(this.addGameBtn);
+            this.editGamesPanel.Controls.Add(this.gameListLbl);
             this.editGamesPanel.Controls.Add(this.backBtn1);
             this.editGamesPanel.Location = new System.Drawing.Point(28, 181);
             this.editGamesPanel.Name = "editGamesPanel";
@@ -253,24 +265,100 @@
             this.editGamesPanel.TabIndex = 7;
             this.editGamesPanel.Visible = false;
             // 
+            // addGamePanel
+            // 
+            this.addGamePanel.Controls.Add(this.backBtn);
+            this.addGamePanel.Controls.Add(this.addGameBtn1);
+            this.addGamePanel.Controls.Add(this.processNameAddLbl);
+            this.addGamePanel.Controls.Add(this.gameNameAddLbl);
+            this.addGamePanel.Controls.Add(this.gameProcessAddTxtBox);
+            this.addGamePanel.Controls.Add(this.gameNameAddTxtBox);
+            this.addGamePanel.Location = new System.Drawing.Point(0, 0);
+            this.addGamePanel.Name = "addGamePanel";
+            this.addGamePanel.Size = new System.Drawing.Size(245, 234);
+            this.addGamePanel.TabIndex = 6;
+            this.addGamePanel.Visible = false;
+            // 
+            // backBtn
+            // 
+            this.backBtn.Location = new System.Drawing.Point(23, 151);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(75, 23);
+            this.backBtn.TabIndex = 5;
+            this.backBtn.Text = "Back";
+            this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
+            // 
+            // addGameBtn1
+            // 
+            this.addGameBtn1.Location = new System.Drawing.Point(116, 151);
+            this.addGameBtn1.Name = "addGameBtn1";
+            this.addGameBtn1.Size = new System.Drawing.Size(75, 23);
+            this.addGameBtn1.TabIndex = 4;
+            this.addGameBtn1.Text = "Add";
+            this.addGameBtn1.UseVisualStyleBackColor = true;
+            // 
+            // processNameAddLbl
+            // 
+            this.processNameAddLbl.AutoSize = true;
+            this.processNameAddLbl.Location = new System.Drawing.Point(20, 97);
+            this.processNameAddLbl.Name = "processNameAddLbl";
+            this.processNameAddLbl.Size = new System.Drawing.Size(77, 13);
+            this.processNameAddLbl.TabIndex = 3;
+            this.processNameAddLbl.Text = "Process name:";
+            // 
+            // gameNameAddLbl
+            // 
+            this.gameNameAddLbl.AutoSize = true;
+            this.gameNameAddLbl.Location = new System.Drawing.Point(20, 49);
+            this.gameNameAddLbl.Name = "gameNameAddLbl";
+            this.gameNameAddLbl.Size = new System.Drawing.Size(67, 13);
+            this.gameNameAddLbl.TabIndex = 2;
+            this.gameNameAddLbl.Text = "Game name:";
+            // 
+            // gameProcessAddTxtBox
+            // 
+            this.gameProcessAddTxtBox.Location = new System.Drawing.Point(103, 94);
+            this.gameProcessAddTxtBox.Name = "gameProcessAddTxtBox";
+            this.gameProcessAddTxtBox.Size = new System.Drawing.Size(100, 20);
+            this.gameProcessAddTxtBox.TabIndex = 1;
+            // 
+            // gameNameAddTxtBox
+            // 
+            this.gameNameAddTxtBox.Location = new System.Drawing.Point(103, 44);
+            this.gameNameAddTxtBox.Name = "gameNameAddTxtBox";
+            this.gameNameAddTxtBox.Size = new System.Drawing.Size(100, 20);
+            this.gameNameAddTxtBox.TabIndex = 0;
+            this.gameNameAddTxtBox.TextChanged += new System.EventHandler(this.gameNameAddTxtBox_TextChanged);
+            // 
+            // addGameBtn
+            // 
+            this.addGameBtn.Location = new System.Drawing.Point(141, 16);
+            this.addGameBtn.Name = "addGameBtn";
+            this.addGameBtn.Size = new System.Drawing.Size(75, 23);
+            this.addGameBtn.TabIndex = 5;
+            this.addGameBtn.Text = "Add Game";
+            this.addGameBtn.UseVisualStyleBackColor = true;
+            this.addGameBtn.Click += new System.EventHandler(this.addGameBtn_Click);
+            // 
+            // gameListLbl
+            // 
+            this.gameListLbl.AutoSize = true;
+            this.gameListLbl.Location = new System.Drawing.Point(87, 78);
+            this.gameListLbl.Name = "gameListLbl";
+            this.gameListLbl.Size = new System.Drawing.Size(63, 13);
+            this.gameListLbl.TabIndex = 4;
+            this.gameListLbl.Text = "gameListLbl";
+            // 
             // backBtn1
             // 
-            this.backBtn1.Location = new System.Drawing.Point(12, 16);
+            this.backBtn1.Location = new System.Drawing.Point(35, 16);
             this.backBtn1.Name = "backBtn1";
             this.backBtn1.Size = new System.Drawing.Size(75, 23);
             this.backBtn1.TabIndex = 2;
             this.backBtn1.Text = "Back";
             this.backBtn1.UseVisualStyleBackColor = true;
             this.backBtn1.Click += new System.EventHandler(this.backBtn1_Click);
-            // 
-            // editGamesTxtBox
-            // 
-            this.editGamesTxtBox.Location = new System.Drawing.Point(76, 95);
-            this.editGamesTxtBox.Name = "editGamesTxtBox";
-            this.editGamesTxtBox.Size = new System.Drawing.Size(100, 20);
-            this.editGamesTxtBox.TabIndex = 3;
-            this.editGamesTxtBox.Text = "gdrf";
-            this.editGamesTxtBox.TextChanged += new System.EventHandler(this.editGamesTxtBox_TextChanged);
             // 
             // GameMonitor
             // 
@@ -294,6 +382,8 @@
             this.groupBox1.PerformLayout();
             this.editGamesPanel.ResumeLayout(false);
             this.editGamesPanel.PerformLayout();
+            this.addGamePanel.ResumeLayout(false);
+            this.addGamePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,7 +413,15 @@
         private System.Windows.Forms.ToolStripMenuItem addGameToolStripMenuItem;
         private System.Windows.Forms.Panel editGamesPanel;
         private System.Windows.Forms.Button backBtn1;
-        private System.Windows.Forms.TextBox editGamesTxtBox;
+        private System.Windows.Forms.Label gameListLbl;
+        private System.Windows.Forms.Button addGameBtn;
+        private System.Windows.Forms.Panel addGamePanel;
+        private System.Windows.Forms.Button addGameBtn1;
+        private System.Windows.Forms.Label processNameAddLbl;
+        private System.Windows.Forms.Label gameNameAddLbl;
+        private System.Windows.Forms.TextBox gameProcessAddTxtBox;
+        private System.Windows.Forms.TextBox gameNameAddTxtBox;
+        private System.Windows.Forms.Button backBtn;
     }
 }
 

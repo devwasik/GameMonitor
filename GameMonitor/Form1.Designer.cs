@@ -49,25 +49,24 @@
             this.userLbl = new System.Windows.Forms.Label();
             this.appStatusLbl = new System.Windows.Forms.Label();
             this.editGamesPanel = new System.Windows.Forms.Panel();
-            this.addGamePanel = new System.Windows.Forms.Panel();
-            this.backBtn = new System.Windows.Forms.Button();
-            this.addGameBtn1 = new System.Windows.Forms.Button();
-            this.processNameAddLbl = new System.Windows.Forms.Label();
-            this.gameNameAddLbl = new System.Windows.Forms.Label();
-            this.gameProcessAddTxtBox = new System.Windows.Forms.TextBox();
-            this.gameNameAddTxtBox = new System.Windows.Forms.TextBox();
             this.addGameBtn = new System.Windows.Forms.Button();
             this.gameListLbl = new System.Windows.Forms.Label();
             this.backBtn1 = new System.Windows.Forms.Button();
             this.homePanel = new System.Windows.Forms.Panel();
             this.logo = new System.Windows.Forms.PictureBox();
             this.homeBtn = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.homeTab = new System.Windows.Forms.TabPage();
+            this.gamesTab = new System.Windows.Forms.TabPage();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.editGamesPanel.SuspendLayout();
-            this.addGamePanel.SuspendLayout();
             this.homePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.homeTab.SuspendLayout();
+            this.gamesTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -87,7 +86,8 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newUserToolStripMenuItem,
-            this.loadUserToolStripMenuItem});
+            this.loadUserToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -154,7 +154,7 @@
             // 
             this.startStopBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.startStopBtn.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.startStopBtn.Location = new System.Drawing.Point(68, 377);
+            this.startStopBtn.Location = new System.Drawing.Point(8, 282);
             this.startStopBtn.Name = "startStopBtn";
             this.startStopBtn.Size = new System.Drawing.Size(151, 38);
             this.startStopBtn.TabIndex = 1;
@@ -200,7 +200,7 @@
             this.groupBox1.Controls.Add(this.playingTitleLbl);
             this.groupBox1.Controls.Add(this.userTitleLbl);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.groupBox1.Location = new System.Drawing.Point(16, 16);
+            this.groupBox1.Location = new System.Drawing.Point(8, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(226, 123);
             this.groupBox1.TabIndex = 5;
@@ -246,81 +246,14 @@
             // editGamesPanel
             // 
             this.editGamesPanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.editGamesPanel.Controls.Add(this.addGamePanel);
             this.editGamesPanel.Controls.Add(this.addGameBtn);
             this.editGamesPanel.Controls.Add(this.gameListLbl);
             this.editGamesPanel.Controls.Add(this.backBtn1);
-            this.editGamesPanel.Location = new System.Drawing.Point(18, 181);
+            this.editGamesPanel.Location = new System.Drawing.Point(0, 30);
             this.editGamesPanel.Name = "editGamesPanel";
-            this.editGamesPanel.Size = new System.Drawing.Size(245, 234);
+            this.editGamesPanel.Size = new System.Drawing.Size(224, 150);
             this.editGamesPanel.TabIndex = 7;
             this.editGamesPanel.Visible = false;
-            // 
-            // addGamePanel
-            // 
-            this.addGamePanel.Controls.Add(this.backBtn);
-            this.addGamePanel.Controls.Add(this.addGameBtn1);
-            this.addGamePanel.Controls.Add(this.processNameAddLbl);
-            this.addGamePanel.Controls.Add(this.gameNameAddLbl);
-            this.addGamePanel.Controls.Add(this.gameProcessAddTxtBox);
-            this.addGamePanel.Controls.Add(this.gameNameAddTxtBox);
-            this.addGamePanel.Location = new System.Drawing.Point(0, 0);
-            this.addGamePanel.Name = "addGamePanel";
-            this.addGamePanel.Size = new System.Drawing.Size(245, 234);
-            this.addGamePanel.TabIndex = 6;
-            this.addGamePanel.Visible = false;
-            // 
-            // backBtn
-            // 
-            this.backBtn.Location = new System.Drawing.Point(23, 151);
-            this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(75, 23);
-            this.backBtn.TabIndex = 5;
-            this.backBtn.Text = "Back";
-            this.backBtn.UseVisualStyleBackColor = true;
-            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
-            // 
-            // addGameBtn1
-            // 
-            this.addGameBtn1.Location = new System.Drawing.Point(116, 151);
-            this.addGameBtn1.Name = "addGameBtn1";
-            this.addGameBtn1.Size = new System.Drawing.Size(75, 23);
-            this.addGameBtn1.TabIndex = 4;
-            this.addGameBtn1.Text = "Add";
-            this.addGameBtn1.UseVisualStyleBackColor = true;
-            // 
-            // processNameAddLbl
-            // 
-            this.processNameAddLbl.AutoSize = true;
-            this.processNameAddLbl.Location = new System.Drawing.Point(20, 97);
-            this.processNameAddLbl.Name = "processNameAddLbl";
-            this.processNameAddLbl.Size = new System.Drawing.Size(77, 13);
-            this.processNameAddLbl.TabIndex = 3;
-            this.processNameAddLbl.Text = "Process name:";
-            // 
-            // gameNameAddLbl
-            // 
-            this.gameNameAddLbl.AutoSize = true;
-            this.gameNameAddLbl.Location = new System.Drawing.Point(20, 49);
-            this.gameNameAddLbl.Name = "gameNameAddLbl";
-            this.gameNameAddLbl.Size = new System.Drawing.Size(67, 13);
-            this.gameNameAddLbl.TabIndex = 2;
-            this.gameNameAddLbl.Text = "Game name:";
-            // 
-            // gameProcessAddTxtBox
-            // 
-            this.gameProcessAddTxtBox.Location = new System.Drawing.Point(103, 94);
-            this.gameProcessAddTxtBox.Name = "gameProcessAddTxtBox";
-            this.gameProcessAddTxtBox.Size = new System.Drawing.Size(100, 20);
-            this.gameProcessAddTxtBox.TabIndex = 1;
-            // 
-            // gameNameAddTxtBox
-            // 
-            this.gameNameAddTxtBox.Location = new System.Drawing.Point(103, 44);
-            this.gameNameAddTxtBox.Name = "gameNameAddTxtBox";
-            this.gameNameAddTxtBox.Size = new System.Drawing.Size(100, 20);
-            this.gameNameAddTxtBox.TabIndex = 0;
-            this.gameNameAddTxtBox.TextChanged += new System.EventHandler(this.gameNameAddTxtBox_TextChanged);
             // 
             // addGameBtn
             // 
@@ -343,7 +276,7 @@
             // 
             // backBtn1
             // 
-            this.backBtn1.Location = new System.Drawing.Point(35, 16);
+            this.backBtn1.Location = new System.Drawing.Point(21, 16);
             this.backBtn1.Name = "backBtn1";
             this.backBtn1.Size = new System.Drawing.Size(75, 23);
             this.backBtn1.TabIndex = 2;
@@ -354,7 +287,7 @@
             // homePanel
             // 
             this.homePanel.Controls.Add(this.groupBox1);
-            this.homePanel.Location = new System.Drawing.Point(15, 188);
+            this.homePanel.Location = new System.Drawing.Point(0, 6);
             this.homePanel.Name = "homePanel";
             this.homePanel.Size = new System.Drawing.Size(261, 166);
             this.homePanel.TabIndex = 8;
@@ -363,7 +296,7 @@
             // 
             this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
             this.logo.InitialImage = ((System.Drawing.Image)(resources.GetObject("logo.InitialImage")));
-            this.logo.Location = new System.Drawing.Point(15, 93);
+            this.logo.Location = new System.Drawing.Point(12, 30);
             this.logo.Name = "logo";
             this.logo.Size = new System.Drawing.Size(262, 50);
             this.logo.TabIndex = 9;
@@ -371,13 +304,53 @@
             // 
             // homeBtn
             // 
-            this.homeBtn.Location = new System.Drawing.Point(201, 41);
+            this.homeBtn.Location = new System.Drawing.Point(190, 27);
             this.homeBtn.Name = "homeBtn";
             this.homeBtn.Size = new System.Drawing.Size(75, 23);
             this.homeBtn.TabIndex = 10;
             this.homeBtn.Text = "Home";
             this.homeBtn.UseVisualStyleBackColor = true;
             this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.homeTab);
+            this.tabControl1.Controls.Add(this.gamesTab);
+            this.tabControl1.Location = new System.Drawing.Point(17, 86);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(235, 397);
+            this.tabControl1.TabIndex = 11;
+            // 
+            // homeTab
+            // 
+            this.homeTab.Controls.Add(this.homePanel);
+            this.homeTab.Controls.Add(this.startStopBtn);
+            this.homeTab.Location = new System.Drawing.Point(4, 22);
+            this.homeTab.Name = "homeTab";
+            this.homeTab.Padding = new System.Windows.Forms.Padding(3);
+            this.homeTab.Size = new System.Drawing.Size(227, 371);
+            this.homeTab.TabIndex = 0;
+            this.homeTab.Text = "Home";
+            this.homeTab.UseVisualStyleBackColor = true;
+            // 
+            // gamesTab
+            // 
+            this.gamesTab.Controls.Add(this.editGamesPanel);
+            this.gamesTab.Location = new System.Drawing.Point(4, 22);
+            this.gamesTab.Name = "gamesTab";
+            this.gamesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.gamesTab.Size = new System.Drawing.Size(227, 371);
+            this.gamesTab.TabIndex = 1;
+            this.gamesTab.Text = "Games";
+            this.gamesTab.UseVisualStyleBackColor = true;
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // GameMonitor
             // 
@@ -387,10 +360,8 @@
             this.ClientSize = new System.Drawing.Size(288, 475);
             this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.logo);
-            this.Controls.Add(this.editGamesPanel);
-            this.Controls.Add(this.homePanel);
-            this.Controls.Add(this.startStopBtn);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -402,10 +373,11 @@
             this.groupBox1.PerformLayout();
             this.editGamesPanel.ResumeLayout(false);
             this.editGamesPanel.PerformLayout();
-            this.addGamePanel.ResumeLayout(false);
-            this.addGamePanel.PerformLayout();
             this.homePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.homeTab.ResumeLayout(false);
+            this.gamesTab.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -436,16 +408,13 @@
         private System.Windows.Forms.Button backBtn1;
         private System.Windows.Forms.Label gameListLbl;
         private System.Windows.Forms.Button addGameBtn;
-        private System.Windows.Forms.Panel addGamePanel;
-        private System.Windows.Forms.Button addGameBtn1;
-        private System.Windows.Forms.Label processNameAddLbl;
-        private System.Windows.Forms.Label gameNameAddLbl;
-        private System.Windows.Forms.TextBox gameProcessAddTxtBox;
-        private System.Windows.Forms.TextBox gameNameAddTxtBox;
-        private System.Windows.Forms.Button backBtn;
         private System.Windows.Forms.Panel homePanel;
         private System.Windows.Forms.PictureBox logo;
         private System.Windows.Forms.Button homeBtn;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage homeTab;
+        private System.Windows.Forms.TabPage gamesTab;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

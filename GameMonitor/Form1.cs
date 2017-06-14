@@ -134,28 +134,23 @@ namespace GameMonitor {
 
         private void addGameBtn_Click(object sender, EventArgs e)
         {
-            addGamePanel.Visible = true;
             homePanel.Visible = false;
         }
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            addGamePanel.Visible = false;
+            
         }
 
         private void gameNameAddTxtBox_TextChanged(object sender, EventArgs e)
         {
             string addGame;
             string addProcess;
-
-            addGame = gameNameAddTxtBox.Text;
-            addProcess = gameProcessAddTxtBox.Text;
         }
 
         private void addGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResetView();
-            addGamePanel.Visible = true;
         }
 
         
@@ -163,7 +158,6 @@ namespace GameMonitor {
         private void ResetView()
         {
             homePanel.Visible = false;
-            addGamePanel.Visible = false;
             editGamesPanel.Visible = false;
         }
 
@@ -171,6 +165,11 @@ namespace GameMonitor {
         {
             ResetView();
             homePanel.Visible = true;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

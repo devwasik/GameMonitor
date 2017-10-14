@@ -37,9 +37,6 @@ namespace GameMonitor {
 			 */
             appStatusLbl.ForeColor = Color.Red;
             appStatusLbl.Text = "Paused";
-            gameListLbl.Text = GameFile.BuildEditGamePanel();
-
-
         }
 
         public void ExceptionHandler(string message, string stackTrace)

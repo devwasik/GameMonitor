@@ -16,6 +16,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 //This class will be used for the gameProcesses.txt file
 //Will allow user to edit, add, and remove items
@@ -27,7 +29,6 @@ namespace GameMonitor
         #region Objects
         private static List<string> gameProcesses = new List<string>();
         private static List<string> gameName = new List<string>();
-        private static string gameFilePath = "gameProcesses.txt";
         #endregion
 
         #region Properties
@@ -59,73 +60,37 @@ namespace GameMonitor
 
         public static List<string> LoadGameList()
         {
-            try
+
+            //To Do: Move connection to its own DB class
+
+            MySqlConnection dbConn = new MySqlConnection("Persist Security Info=False;server=localhost;database=gamemonitor;uid=root;password=");
+            dbConn.Open();
+            MySqlCommand cmd = dbConn.CreateCommand();
+            cmd.CommandText = "SELECT * FROM games";
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                /*
-				 * Create stream reader and read the whole file, line by line, adding each line to game list.
-				 */
-                StreamReader sr = new StreamReader(gameFilePath);
-                string line = "";
-
-                //Read each line and take the process name / game name seperated by commas
-
-                while ((line = sr.ReadLine()) != null)
-                {
-                    string[] csv;
-                    csv = line.Split(',');
-                    //First item in the line is the process name
-                    gameProcesses.Add(csv[0]);
-                    //After processName there is a comma then -> game name
-                    gameName.Add(csv[1]);
-                }
+                gameName.Add(reader["gameName"].ToString());
+                gameProcesses.Add(reader["processName"].ToString());
             }
 
-            catch (Exception e)
-            {
+            /*  For testing - converts the List to string
+             
+            StringBuilder builder = new StringBuilder();
 
-                Console.WriteLine(e);
-                //Need to generate exception window
+            foreach (string str in GameName)
+            {
+                builder.Append(str.ToString()).AppendLine();
             }
 
-            return gameProcesses;
-        }
+            MessageBox.Show(builder.ToString());
 
-        public static string BuildEditGamePanel()
-        {
-            gameName.Sort();
-            var text = "";
-            foreach (string g in gameName)
-            {
-                text += g.ToString() + "\n";
-            }
-            return text;
-        }
+             */
 
+            return gameName;
+            
 
-        public static void DoesGameExist(string zGameName, string zProcessName)
-        {
-            if (gameName.IndexOf(zGameName) > -1)
-            {
-                AddToGamesFile(zGameName, zProcessName);
-            }
-            else
-            {
-                MessageBox.Show("Game already exists");
-            }
-        }
-
-        public static void AddToGamesFile(string zGameName, string zProcessName)
-        {
-
-        }
-
-        public static void EditGamesFile(string zGameName, string zProcessName)
-        {
-
-        }
-
-        public void DeleteFromGamesFile(string zGameName, string zProcessName)
-        {
 
         }
     }

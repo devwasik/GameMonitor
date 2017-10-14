@@ -85,7 +85,6 @@ namespace GameMonitor {
         /// </summary>
         public ProgramLogic() {
             GameFile.LoadGameList();
-            GameFile.BuildEditGamePanel();          
 		}
 
 		/// <summary>

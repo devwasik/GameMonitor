@@ -33,6 +33,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editGamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +69,6 @@
             this.loginPasswordlbl = new System.Windows.Forms.Label();
             this.loginUserlbl = new System.Windows.Forms.Label();
             this.loginBtn = new System.Windows.Forms.Button();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.editGamesPanel.SuspendLayout();
@@ -114,6 +114,12 @@
             this.loadUserToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.loadUserToolStripMenuItem.Text = "Load User";
             this.loadUserToolStripMenuItem.Click += new System.EventHandler(this.loadUserToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
             // 
             // gamesToolStripMenuItem
             // 
@@ -240,9 +246,8 @@
             this.userLbl.AutoSize = true;
             this.userLbl.Location = new System.Drawing.Point(44, 16);
             this.userLbl.Name = "userLbl";
-            this.userLbl.Size = new System.Drawing.Size(90, 13);
+            this.userLbl.Size = new System.Drawing.Size(0, 13);
             this.userLbl.TabIndex = 6;
-            this.userLbl.Text = "No user selected!";
             // 
             // appStatusLbl
             // 
@@ -444,12 +449,6 @@
             this.loginBtn.UseVisualStyleBackColor = true;
             this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            // 
             // GameMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,9 +457,9 @@
             this.ClientSize = new System.Drawing.Size(288, 475);
             this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.logo);
+            this.Controls.Add(this.homePanel);
             this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.editGamesPanel);
-            this.Controls.Add(this.homePanel);
             this.Controls.Add(this.startStopBtn);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

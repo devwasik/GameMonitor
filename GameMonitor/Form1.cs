@@ -41,6 +41,7 @@ namespace GameMonitor {
 			 */
             appStatusLbl.ForeColor = Color.Red;
             appStatusLbl.Text = "Paused";
+            userLbl.Text = user.Username;
         }
 
         public void ExceptionHandler(string message, string stackTrace)
@@ -192,6 +193,11 @@ namespace GameMonitor {
             if (user.Login())
             {
                 MessageBox.Show("Login Success");
+                ResetView();
+                userLbl.Text = user.Username;
+                homePanel.Visible = true;
+                
+               
             }
             else
             {

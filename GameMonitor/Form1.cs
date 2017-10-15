@@ -41,7 +41,6 @@ namespace GameMonitor {
 			 */
             appStatusLbl.ForeColor = Color.Red;
             appStatusLbl.Text = "Paused";
-            userLbl.Text = user.Username;
         }
 
         public void ExceptionHandler(string message, string stackTrace)
@@ -71,95 +70,6 @@ namespace GameMonitor {
             }
         }
 
-        private void newUserToolStripMenuItem_Click(object sender, EventArgs e) {
-            try
-            {
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "Text File|*.txt";
-                sfd.FileName = "";
-                sfd.Title = "Create new user file";
-                sfd.ShowDialog();
-                sfd.Dispose();
-                System.IO.File.WriteAllText(sfd.FileName + ".txt", "");
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler(ex.Message, ex.StackTrace);
-            }
-        }
-
-        private void loadUserToolStripMenuItem_Click(object sender, EventArgs e) {
-            OpenFileDialog ofg = new OpenFileDialog();
-            ofg.ShowDialog();
-        }
-
-        private void loadUserFileBtn_Click(object sender, EventArgs e)
-        {
-            Stream fs = null;
-            OpenFileDialog ofg = new OpenFileDialog();
-
-            ofg.InitialDirectory = "c:\\";
-            ofg.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            ofg.FilterIndex = 2;
-            ofg.RestoreDirectory = true;
-
-            if (ofg.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    if ((fs = ofg.OpenFile()) != null)
-                    {
-                        using (fs)
-                        {
-                            MessageBox.Show(File.ReadAllText(ofg.FileName));
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error reading file. Error details: " + ex.Message);
-                }
-            }
-        }
-
-        private void editGamesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ResetView();
-            editGamesPanel.Visible = true;
-        }
-
-        private void backBtn1_Click(object sender, EventArgs e)
-        {
-            editGamesPanel.Visible = false;
-            homePanel.Visible = true;
-        }
-
-        private void addGameBtn_Click(object sender, EventArgs e)
-        {
-            addGamePanel.Visible = true;
-            homePanel.Visible = false;
-        }
-
-        private void backBtn_Click(object sender, EventArgs e)
-        {
-            addGamePanel.Visible = false;
-        }
-
-        private void gameNameAddTxtBox_TextChanged(object sender, EventArgs e)
-        {
-            string addGame;
-            string addProcess;
-
-            addGame = gameNameAddTxtBox.Text;
-            addProcess = gameProcessAddTxtBox.Text;
-        }
-
-        private void addGameToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ResetView();
-            addGamePanel.Visible = true;
-        }
-
         private void InitializeAppView()
         {
             ResetView();
@@ -170,15 +80,7 @@ namespace GameMonitor {
         private void ResetView()
         {
             homePanel.Visible = false;
-            addGamePanel.Visible = false;
-            editGamesPanel.Visible = false;
             loginPanel.Visible = false;
-        }
-
-        private void homeBtn_Click(object sender, EventArgs e)
-        {
-            ResetView();
-            homePanel.Visible = true;
         }
 
         private void loginPanel_Paint(object sender, PaintEventArgs e)

@@ -21,7 +21,7 @@ namespace GameMonitor {
         /// <summary>Program processes and logic .</summary>
 		ProgramLogic p = new ProgramLogic();
         /// <summary> User file manager.</summary>
-        UserFile ufile = new UserFile();
+        User user = new User();
         /// <summary>Game file manager.</summary>
         GameFile gfile = new GameFile();
 
@@ -183,6 +183,21 @@ namespace GameMonitor {
         private void loginPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+            user.Username = loginUserTxtBox.Text;
+            user.Password = loginPasswordTxtBox.Text;
+            if (user.Login())
+            {
+                MessageBox.Show("Login Success");
+            }
+            else
+            {
+                MessageBox.Show("Login Failed");
+            }
+            
         }
     }
 }

@@ -63,7 +63,7 @@
   <ItemGroup>
     <Compile Include="DBconn.cs" />
     <Compile Include="GameFile.cs" />
-    <Compile Include="UserFile.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

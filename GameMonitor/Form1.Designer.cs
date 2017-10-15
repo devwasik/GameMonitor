@@ -68,6 +68,7 @@
             this.loginPasswordlbl = new System.Windows.Forms.Label();
             this.loginUserlbl = new System.Windows.Forms.Label();
             this.loginBtn = new System.Windows.Forms.Button();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.editGamesPanel.SuspendLayout();
@@ -94,7 +95,8 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newUserToolStripMenuItem,
-            this.loadUserToolStripMenuItem});
+            this.loadUserToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -440,6 +442,13 @@
             this.loginBtn.TabIndex = 0;
             this.loginBtn.Text = "Login";
             this.loginBtn.UseVisualStyleBackColor = true;
+            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
             // 
             // GameMonitor
             // 
@@ -517,6 +526,7 @@
         private System.Windows.Forms.Label loginPasswordlbl;
         private System.Windows.Forms.Label loginUserlbl;
         private System.Windows.Forms.Button loginBtn;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

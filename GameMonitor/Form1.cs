@@ -31,6 +31,10 @@ namespace GameMonitor {
         public GameMonitor() {
 
             InitializeComponent();
+
+            //Make sure we start with only login panel visible
+            InitializeAppView();
+
             /*
 			 * Set the default status as paused and color appropriately.
 			 * todo: set the color of the text in the same place that you change the actual text (move to a property).
@@ -155,19 +159,30 @@ namespace GameMonitor {
             addGamePanel.Visible = true;
         }
 
-        
+        private void InitializeAppView()
+        {
+            ResetView();
+            loginPanel.Visible = true;
+        }
+
         //Hide all panels
         private void ResetView()
         {
             homePanel.Visible = false;
             addGamePanel.Visible = false;
             editGamesPanel.Visible = false;
+            loginPanel.Visible = false;
         }
 
         private void homeBtn_Click(object sender, EventArgs e)
         {
             ResetView();
             homePanel.Visible = true;
+        }
+
+        private void loginPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

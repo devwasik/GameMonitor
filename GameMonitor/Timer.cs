@@ -9,9 +9,16 @@ namespace GameMonitor
 {
     class TimerClass
     {
-        private Timer t;
 
+        #region Values
+
+        private Timer t;
         private string theTime;
+
+        #endregion
+
+
+        #region Properties
 
         public string TheTime
         {
@@ -25,6 +32,8 @@ namespace GameMonitor
                 OnTheTimeChanged(this.theTime);
             }
         }
+
+        #endregion
 
         public TimerClass()
         {

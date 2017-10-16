@@ -42,6 +42,7 @@ namespace GameMonitor
             //Make sure we start with only login panel visible
             InitializeAppView();
 
+            //Refresh UI every 5 seconds
             tc.TheTimeChanged += new TimerClass.TimerTickHandler(IntervalHasPassed);
 
             /*
@@ -101,7 +102,8 @@ namespace GameMonitor
         {
             user.Username = loginUserTxtBox.Text;
             user.Password = loginPasswordTxtBox.Text;
-            if (user.Login())
+
+            if (user.Login(user.Username, user.Password))
             {
                 MessageBox.Show("Login Success");
                 ResetView();

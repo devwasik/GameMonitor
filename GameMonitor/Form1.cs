@@ -12,28 +12,37 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Threading;
+using System.Timers;
 using System.Windows.Forms;
 
-namespace GameMonitor {
+namespace GameMonitor
+{
 
-    public partial class GameMonitor : Form {
+    public partial class GameMonitor : Form
+    {
 
         /// <summary>Program processes and logic .</summary>
 		ProgramLogic p = new ProgramLogic();
         /// <summary> User file manager.</summary>
         User user = new User();
-        /// <summary>Game file manager.</summary>
-        GameFile gfile = new GameFile();
+        /// <summary>Game manager.</summary>
+        GameManager gm = new GameManager();
+
+        TimerClass tc = new TimerClass();
 
         /// <summary>
         /// Default constructor. Initialize the form components and adjust component properties.
         /// </summary>
-        public GameMonitor() {
+        public GameMonitor()
+        {
 
             InitializeComponent();
 
             //Make sure we start with only login panel visible
             InitializeAppView();
+
+            tc.TheTimeChanged += new TimerClass.TimerTickHandler(IntervalHasPassed);
 
             /*
 			 * Set the default status as paused and color appropriately.
@@ -52,17 +61,17 @@ namespace GameMonitor {
 
         #region Event Handlers
 
-        private void startStopBtn_Click(object sender, EventArgs e) {
-            if (p.AppRunning == false) {
+        private void startStopBtn_Click(object sender, EventArgs e)
+        {
+            if (p.AppRunning == false)
+            {
                 p.AppRunning = true;
                 startStopBtn.Text = "Stop";
                 appStatusLbl.ForeColor = Color.Green;
                 appStatusLbl.Text = "Running";
-
-                if (p.CurrentGame != " ") {
-                    playingLbl.Text = p.CurrentGame;
-                }
-            } else {
+            }
+            else
+            {
                 p.AppRunning = false;
                 startStopBtn.Text = "Start";
                 appStatusLbl.ForeColor = Color.Red;
@@ -98,16 +107,29 @@ namespace GameMonitor {
                 ResetView();
                 userLbl.Text = user.Username;
                 homePanel.Visible = true;
-                
-               
+
+
             }
             else
             {
                 MessageBox.Show("Login Failed");
             }
-            
+
+        }
+
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        protected void IntervalHasPassed(string newTime)
+        {
+            this.Invoke(new MethodInvoker(delegate () { playingLbl.Text = p.CurrentGame; }));
+           
         }
     }
 }
+
 
 		#endregion

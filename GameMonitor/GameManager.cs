@@ -24,7 +24,7 @@ using MySql.Data.MySqlClient;
 
 namespace GameMonitor
 {
-    class GameFile
+    class GameManager
     {
         #region Objects
         private static List<string> gameProcesses = new List<string>();

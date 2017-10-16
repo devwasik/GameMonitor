@@ -45,7 +45,7 @@ namespace GameMonitor {
 					timer.Elapsed += new ElapsedEventHandler( CheckProcesses );
 					timer.Enabled = true;
 					timer.AutoReset = true;
-				}
+                }
 			}
 		}
 
@@ -65,6 +65,8 @@ namespace GameMonitor {
 			}
 		}
 
+
+
         #endregion
 
         #region Values
@@ -72,7 +74,7 @@ namespace GameMonitor {
         /// <summary>Current application running status. Default = Paused.</summary>
         private bool appRunning = false;
 		/// <summary>Title of the currently running game.</summary>
-		private string currentGame = " ";
+		private string currentGame = "Not in game";
         /// <summary>Private flag indicating if a game is running or not. Default = False.</summary>
 		private bool playingGame = false;
 
@@ -84,7 +86,7 @@ namespace GameMonitor {
         /// Default constructor. Here we will load game list text file via constructor and eventually a user file here as well
         /// </summary>
         public ProgramLogic() {
-            GameFile.LoadGameList();
+            GameManager.LoadGameList();
 		}
 
 		/// <summary>
@@ -101,7 +103,7 @@ namespace GameMonitor {
 			Process[] processCheck = Process.GetProcesses();
 
 			// Loop through each game.
-			for( int g = 0; g < GameFile.GameProcesses.Count; g++ ) {
+			for( int g = 0; g < GameManager.GameProcesses.Count; g++ ) {
 
 				// Loop through each process.
 				foreach( Process process in processCheck ) {
@@ -109,8 +111,8 @@ namespace GameMonitor {
 					/*
 					 * If we get a match from a running process, set the current game and break out of loop.
 					 */
-					if( process.ProcessName == GameFile.GameProcesses[g] ) {
-						currentGame = GameFile.GameName[g];      
+					if( process.ProcessName == GameManager.GameProcesses[g] ) {
+						currentGame = GameManager.GameName[g];      
 						playingGame = true;
 						break;
 					}
@@ -135,8 +137,8 @@ namespace GameMonitor {
 		private void StoppedPlaying() {
 
 			playingGame = false;
-			appRunning = false;
-			currentGame = " ";
+			appRunning = true;
+			currentGame = "Not in game";
 		}
 	}
 }

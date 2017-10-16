@@ -83,8 +83,9 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // gamesToolStripMenuItem
             // 
@@ -173,9 +174,8 @@
             this.playingLbl.AutoSize = true;
             this.playingLbl.Location = new System.Drawing.Point(56, 43);
             this.playingLbl.Name = "playingLbl";
-            this.playingLbl.Size = new System.Drawing.Size(64, 13);
+            this.playingLbl.Size = new System.Drawing.Size(0, 13);
             this.playingLbl.TabIndex = 7;
-            this.playingLbl.Text = "Not in game";
             // 
             // userLbl
             // 

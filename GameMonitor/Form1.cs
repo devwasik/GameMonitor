@@ -159,7 +159,6 @@ namespace GameMonitor
             StreamReader reader = new StreamReader(dataStream);
             // Read the content.
             string responseFromServer = reader.ReadToEnd();
-            MessageBox.Show(responseFromServer);
             
 
             // Clean up the streams.

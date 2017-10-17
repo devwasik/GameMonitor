@@ -62,7 +62,7 @@ namespace GameMonitor
         {
 
             //To Do: Move connection to its own DB class
-
+            //Create an API to connect to DB without putting connection string in program
             MySqlConnection dbConn = new MySqlConnection("Persist Security Info=False;server=localhost;database=gamemonitor;uid=root;password=");
             dbConn.Open();
             MySqlCommand cmd = dbConn.CreateCommand();

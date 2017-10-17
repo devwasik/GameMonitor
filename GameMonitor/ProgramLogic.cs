@@ -114,6 +114,7 @@ namespace GameMonitor {
 					if( process.ProcessName == GameManager.GameProcesses[g] ) {
 						currentGame = GameManager.GameName[g];      
 						playingGame = true;
+                        StartLoggingHours();
 						break;
 					}
 
@@ -140,6 +141,16 @@ namespace GameMonitor {
 			appRunning = true;
 			currentGame = "Not in game";
 		}
-	}
+
+        //Submit to server every 5 min? in case app crashes during a long session
+        private string StartLoggingHours()
+        {
+            return "a";
+        }
+        //StartLoggingHours() When a game instance is detected beging collecting data
+        //CheckIfPlayedBefore() Called within start logging hours - query db and see if played before, if not insert game
+
+
+    }
 }
 

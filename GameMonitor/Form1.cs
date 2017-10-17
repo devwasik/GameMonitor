@@ -109,8 +109,6 @@ namespace GameMonitor
                 ResetView();
                 userLbl.Text = user.Username;
                 homePanel.Visible = true;
-
-
             }
             else
             {
@@ -118,7 +116,6 @@ namespace GameMonitor
             }
 
         }
-
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {

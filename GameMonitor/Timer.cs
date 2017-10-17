@@ -43,6 +43,16 @@ namespace GameMonitor
             t.Start();
         }
 
+        //Overloaded constructor - used by the method to upload playtime - this doesnt need to run at a 5000 interval like the UI
+        //Passed in string is just placeholder to identify this constructor
+        public TimerClass(string playTimeUpload)
+        {
+            t = new Timer();
+            t.Elapsed += new ElapsedEventHandler(Timer_Tick);
+            t.Interval = 60000; //1 minute
+            t.Start();
+        }
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             TheTime = DateTime.UtcNow.ToString("dd/mm/yyyy HH:mm:ss");

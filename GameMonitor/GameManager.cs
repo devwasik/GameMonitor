@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using HtmlAgilityPack;
 
 //This class will be used for the gameProcesses.txt file
 //Will allow user to edit, add, and remove items
@@ -60,38 +61,30 @@ namespace GameMonitor
 
         public static List<string> LoadGameList()
         {
+            var html = @"http://devwasik.net/gamelist.php/";
+            HtmlWeb web = new HtmlWeb();
+            var htmlDoc = web.Load(html);
 
-            //To Do: Move connection to its own DB class
-            //Create an API to connect to DB without putting connection string in program
-            MySqlConnection dbConn = new MySqlConnection("Persist Security Info=False;server=localhost;database=gamemonitor;uid=root;password=");
-            dbConn.Open();
-            MySqlCommand cmd = dbConn.CreateCommand();
-            cmd.CommandText = "SELECT * FROM games";
+            HtmlNode[] gameNodes = htmlDoc.DocumentNode.SelectNodes("//td[@id='gamename']").ToArray();
 
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            foreach (HtmlNode gnode in gameNodes)
             {
-                gameName.Add(reader["gameName"].ToString());
-                gameProcesses.Add(reader["processName"].ToString());
+                gameName.Add(gnode.InnerText);
             }
 
-            /*  For testing - converts the List to string
-             
-            StringBuilder builder = new StringBuilder();
+            HtmlNode[] processNodes = htmlDoc.DocumentNode.SelectNodes("//td[@id='processname']").ToArray();
 
-            foreach (string str in GameName)
+            foreach (HtmlNode pnode in processNodes)
             {
-                builder.Append(str.ToString()).AppendLine();
+                gameProcesses.Add(pnode.InnerText);
             }
-
-            MessageBox.Show(builder.ToString());
-
-             */
 
             return gameName;
             
 
 
         }
+
+     
     }
 }

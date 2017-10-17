@@ -48,3 +48,6 @@ C:\Users\Nick\Desktop\GameMonitor\GameMonitor\bin\Debug\MySql.Data.Entity.EF6.dl
 C:\Users\Nick\Desktop\GameMonitor\GameMonitor\bin\Debug\MySql.Web.dll
 C:\Users\Nick\Desktop\GameMonitor\GameMonitor\bin\Debug\EntityFramework.xml
 C:\Users\Nick\Desktop\GameMonitor\GameMonitor\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Nick\Documents\GameMonitor\GameMonitor\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Nick\Documents\GameMonitor\GameMonitor\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Nick\Documents\GameMonitor\GameMonitor\bin\Debug\HtmlAgilityPack.xml

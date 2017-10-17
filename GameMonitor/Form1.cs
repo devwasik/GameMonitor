@@ -12,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Net;
+using System.Text;
 using System.Threading;
 using System.Timers;
 using System.Windows.Forms;
@@ -30,6 +32,8 @@ namespace GameMonitor
         GameManager gm = new GameManager();
 
         TimerClass tc = new TimerClass();
+        TimerClass x = new TimerClass("a");
+        
 
         /// <summary>
         /// Default constructor. Initialize the form components and adjust component properties.
@@ -44,6 +48,8 @@ namespace GameMonitor
 
             //Refresh UI every 5 seconds
             tc.TheTimeChanged += new TimerClass.TimerTickHandler(IntervalHasPassed);
+            x.TheTimeChanged += new TimerClass.TimerTickHandler(LogHoursInterval);
+
 
             /*
 			 * Set the default status as paused and color appropriately.
@@ -125,7 +131,43 @@ namespace GameMonitor
         protected void IntervalHasPassed(string newTime)
         {
             this.Invoke(new MethodInvoker(delegate () { playingLbl.Text = p.CurrentGame; }));
-           
+        }
+
+        protected void LogHoursInterval(string newTime)
+        {
+            WebRequest request = WebRequest.Create("http://www.devwasik.net/logHours.php");
+            // Set the Method property of the request to POST.
+            request.Method = "POST";
+            // Create POST data and convert it to a byte array.
+            string postData = "username="+user.Username + "&currentGame="+p.CurrentGame;
+            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+            // Set the ContentType property of the WebRequest.
+            request.ContentType = "application/x-www-form-urlencoded";
+            // Set the ContentLength property of the WebRequest.
+            request.ContentLength = byteArray.Length;
+            // Get the request stream.
+            Stream dataStream = request.GetRequestStream();
+            // Write the data to the request stream.
+            dataStream.Write(byteArray, 0, byteArray.Length);
+            // Close the Stream object.
+            dataStream.Close();
+            // Get the response.
+            WebResponse response = request.GetResponse();
+            // Get the stream containing content returned by the server.
+            dataStream = response.GetResponseStream();
+            // Open the stream using a StreamReader for easy access.
+            StreamReader reader = new StreamReader(dataStream);
+            // Read the content.
+            string responseFromServer = reader.ReadToEnd();
+            MessageBox.Show(responseFromServer);
+            
+
+            // Clean up the streams.
+            reader.Close();
+            dataStream.Close();
+            response.Close();
+            this.Invoke(new MethodInvoker(delegate () { playingLbl.Text = p.CurrentGame; }));
+
         }
     }
 }

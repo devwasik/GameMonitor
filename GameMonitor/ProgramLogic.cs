@@ -142,10 +142,10 @@ namespace GameMonitor {
 			currentGame = "Not in game";
 		}
 
-        //Submit to server every 5 min? in case app crashes during a long session
-        private string StartLoggingHours()
+        //Submit to server every 1min in case app crashes during a long session
+        private void StartLoggingHours()
         {
-            return "a";
+            
         }
         //StartLoggingHours() When a game instance is detected beging collecting data
         //CheckIfPlayedBefore() Called within start logging hours - query db and see if played before, if not insert game

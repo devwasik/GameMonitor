@@ -49,7 +49,7 @@ namespace GameMonitor
         {
             t = new Timer();
             t.Elapsed += new ElapsedEventHandler(Timer_Tick);
-            t.Interval = 60000; //1 minute
+            t.Interval = 10000; //1 minute
             t.Start();
         }
 

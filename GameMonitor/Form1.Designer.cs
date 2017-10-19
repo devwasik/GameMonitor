@@ -47,6 +47,8 @@
             this.homePanel = new System.Windows.Forms.Panel();
             this.logo = new System.Windows.Forms.PictureBox();
             this.loginPanel = new System.Windows.Forms.Panel();
+            this.forgotPasswordLink = new System.Windows.Forms.LinkLabel();
+            this.signUpLink = new System.Windows.Forms.LinkLabel();
             this.loginPasswordTxtBox = new System.Windows.Forms.TextBox();
             this.loginUserTxtBox = new System.Windows.Forms.TextBox();
             this.loginPasswordlbl = new System.Windows.Forms.Label();
@@ -214,6 +216,8 @@
             // loginPanel
             // 
             this.loginPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.loginPanel.Controls.Add(this.forgotPasswordLink);
+            this.loginPanel.Controls.Add(this.signUpLink);
             this.loginPanel.Controls.Add(this.loginPasswordTxtBox);
             this.loginPanel.Controls.Add(this.loginUserTxtBox);
             this.loginPanel.Controls.Add(this.loginPasswordlbl);
@@ -224,6 +228,31 @@
             this.loginPanel.Size = new System.Drawing.Size(245, 245);
             this.loginPanel.TabIndex = 11;
             this.loginPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.loginPanel_Paint);
+            // 
+            // forgotPasswordLink
+            // 
+            this.forgotPasswordLink.ActiveLinkColor = System.Drawing.Color.DarkSalmon;
+            this.forgotPasswordLink.AutoSize = true;
+            this.forgotPasswordLink.LinkColor = System.Drawing.Color.ForestGreen;
+            this.forgotPasswordLink.Location = new System.Drawing.Point(132, 212);
+            this.forgotPasswordLink.Name = "forgotPasswordLink";
+            this.forgotPasswordLink.Size = new System.Drawing.Size(86, 13);
+            this.forgotPasswordLink.TabIndex = 6;
+            this.forgotPasswordLink.TabStop = true;
+            this.forgotPasswordLink.Text = "Forgot Password";
+            // 
+            // signUpLink
+            // 
+            this.signUpLink.ActiveLinkColor = System.Drawing.Color.LightSalmon;
+            this.signUpLink.AutoSize = true;
+            this.signUpLink.LinkColor = System.Drawing.Color.ForestGreen;
+            this.signUpLink.Location = new System.Drawing.Point(53, 212);
+            this.signUpLink.Name = "signUpLink";
+            this.signUpLink.Size = new System.Drawing.Size(43, 13);
+            this.signUpLink.TabIndex = 5;
+            this.signUpLink.TabStop = true;
+            this.signUpLink.Text = "Sign up";
+            this.signUpLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.signUpLink_LinkClicked);
             // 
             // loginPasswordTxtBox
             // 
@@ -322,6 +351,8 @@
         private System.Windows.Forms.Label loginUserlbl;
         private System.Windows.Forms.Button loginBtn;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel signUpLink;
+        private System.Windows.Forms.LinkLabel forgotPasswordLink;
     }
 }
 

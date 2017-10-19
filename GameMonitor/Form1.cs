@@ -32,7 +32,9 @@ namespace GameMonitor
         GameManager gm = new GameManager();
 
         TimerClass tc = new TimerClass();
-        TimerClass x = new TimerClass("a");
+        
+        //Overloaded TC constructor accepts a string 
+        TimerClass lh = new TimerClass("placeholder"); 
         
 
         /// <summary>
@@ -48,7 +50,7 @@ namespace GameMonitor
 
             //Refresh UI every 5 seconds
             tc.TheTimeChanged += new TimerClass.TimerTickHandler(IntervalHasPassed);
-            x.TheTimeChanged += new TimerClass.TimerTickHandler(LogHoursInterval);
+            lh.TheTimeChanged += new TimerClass.TimerTickHandler(LogHoursInterval);
 
 
             /*
@@ -165,8 +167,11 @@ namespace GameMonitor
             reader.Close();
             dataStream.Close();
             response.Close();
-            this.Invoke(new MethodInvoker(delegate () { playingLbl.Text = p.CurrentGame; }));
+        }
 
+        private void signUpLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://devwasik.net/register.php/");
         }
     }
 }

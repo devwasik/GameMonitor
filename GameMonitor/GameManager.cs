@@ -65,8 +65,10 @@ namespace GameMonitor
             HtmlWeb web = new HtmlWeb();
             var htmlDoc = web.Load(html);
 
+            //Build array of nodes and find gamename nodes with xpath
             HtmlNode[] gameNodes = htmlDoc.DocumentNode.SelectNodes("//td[@id='gamename']").ToArray();
 
+            //Iterate the node array and add each item to game list
             foreach (HtmlNode gnode in gameNodes)
             {
                 gameName.Add(gnode.InnerText);

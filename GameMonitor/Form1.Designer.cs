@@ -45,7 +45,6 @@
             this.userLbl = new System.Windows.Forms.Label();
             this.appStatusLbl = new System.Windows.Forms.Label();
             this.homePanel = new System.Windows.Forms.Panel();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.loginPanel = new System.Windows.Forms.Panel();
             this.forgotPasswordLink = new System.Windows.Forms.LinkLabel();
             this.signUpLink = new System.Windows.Forms.LinkLabel();
@@ -54,11 +53,12 @@
             this.loginPasswordlbl = new System.Windows.Forms.Label();
             this.loginUserlbl = new System.Windows.Forms.Label();
             this.loginBtn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.homePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.loginPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -203,16 +203,6 @@
             this.homePanel.Size = new System.Drawing.Size(242, 166);
             this.homePanel.TabIndex = 8;
             // 
-            // logo
-            // 
-            this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
-            this.logo.InitialImage = ((System.Drawing.Image)(resources.GetObject("logo.InitialImage")));
-            this.logo.Location = new System.Drawing.Point(14, 39);
-            this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(262, 50);
-            this.logo.TabIndex = 9;
-            this.logo.TabStop = false;
-            // 
             // loginPanel
             // 
             this.loginPanel.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -297,13 +287,22 @@
             this.loginBtn.UseVisualStyleBackColor = true;
             this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(46, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(207, 130);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
             // GameMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(288, 475);
-            this.Controls.Add(this.logo);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.homePanel);
             this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.startStopBtn);
@@ -318,9 +317,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.homePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,7 +342,6 @@
         private System.Windows.Forms.Label playingLbl;
         private System.Windows.Forms.ToolStripMenuItem gamesToolStripMenuItem;
         private System.Windows.Forms.Panel homePanel;
-        private System.Windows.Forms.PictureBox logo;
         private System.Windows.Forms.Panel loginPanel;
         private System.Windows.Forms.TextBox loginPasswordTxtBox;
         private System.Windows.Forms.TextBox loginUserTxtBox;
@@ -353,6 +351,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.LinkLabel signUpLink;
         private System.Windows.Forms.LinkLabel forgotPasswordLink;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

@@ -51,14 +51,6 @@ namespace GameMonitor
             //Refresh UI every 5 seconds
             tc.TheTimeChanged += new TimerClass.TimerTickHandler(IntervalHasPassed);
             lh.TheTimeChanged += new TimerClass.TimerTickHandler(LogHoursInterval);
-
-
-            /*
-			 * Set the default status as paused and color appropriately.
-			 * todo: set the color of the text in the same place that you change the actual text (move to a property).
-			 */
-            appStatusLbl.ForeColor = Color.Red;
-            appStatusLbl.Text = "Paused";
         }
 
         public void ExceptionHandler(string message, string stackTrace)
@@ -70,23 +62,7 @@ namespace GameMonitor
 
         #region Event Handlers
 
-        private void startStopBtn_Click(object sender, EventArgs e)
-        {
-            if (p.AppRunning == false)
-            {
-                p.AppRunning = true;
-                startStopBtn.Text = "Stop";
-                appStatusLbl.ForeColor = Color.Green;
-                appStatusLbl.Text = "Running";
-            }
-            else
-            {
-                p.AppRunning = false;
-                startStopBtn.Text = "Start";
-                appStatusLbl.ForeColor = Color.Red;
-                appStatusLbl.Text = "Paused";
-            }
-        }
+  
 
         private void InitializeAppView()
         {

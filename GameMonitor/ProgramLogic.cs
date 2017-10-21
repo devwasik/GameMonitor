@@ -23,32 +23,19 @@ namespace GameMonitor {
 	
 
 		#region Properties
+					
+         
+		
+        public ProgramLogic()
+        {
+            GameManager.LoadGameList();
+            Timer timer = new Timer(5000);
+            timer.Interval = 5000;
+            timer.Elapsed += new ElapsedEventHandler(CheckProcesses);
+            timer.Enabled = true;
+            timer.AutoReset = true;
 
-		/// <summary>
-		/// Public property that indicates if a game application is running.
-		/// Valid values are "Paused" or "Running"
-		/// todo: I would suggest changing this to an enum.
-		/// </summary>
-		public bool AppRunning {
-			get {
-				return appRunning;
-			}
-			set {
-				appRunning = value;
-				/*
-				 * If the new value being set is "Running", perform the operations to enable the timer.
-				 * todo: Move all of the timer setup stuff to the Constructor, you only need to enable the timer here.
-				 */
-				if( appRunning == true ) {
-					Timer timer = new Timer(5000);
-					timer.Interval = 5000;
-					timer.Elapsed += new ElapsedEventHandler( CheckProcesses );
-					timer.Enabled = true;
-					timer.AutoReset = true;
-                }
-			}
-		}
-
+        }
 
 		/// <summary>
 		/// Public property that holds the name of the currently running game.
@@ -70,9 +57,6 @@ namespace GameMonitor {
         #endregion
 
         #region Values
-
-        /// <summary>Current application running status. Default = Paused.</summary>
-        private bool appRunning = false;
 		/// <summary>Title of the currently running game.</summary>
 		private string currentGame = "Not in game";
         /// <summary>Private flag indicating if a game is running or not. Default = False.</summary>
@@ -85,9 +69,7 @@ namespace GameMonitor {
         /// <summary>
         /// Default constructor. Here we will load game list text file via constructor and eventually a user file here as well
         /// </summary>
-        public ProgramLogic() {
-            GameManager.LoadGameList();
-		}
+     
 
 		/// <summary>
 		/// Loads the list of gameProcesses from the game list file.
@@ -138,7 +120,6 @@ namespace GameMonitor {
 		private void StoppedPlaying() {
 
 			playingGame = false;
-			appRunning = true;
 			currentGame = "Not in game";
 		}
 

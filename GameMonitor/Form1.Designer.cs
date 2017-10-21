@@ -36,14 +36,11 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.authorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startStopBtn = new System.Windows.Forms.Button();
             this.userTitleLbl = new System.Windows.Forms.Label();
-            this.appStatusTitleLbl = new System.Windows.Forms.Label();
             this.playingTitleLbl = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.playingLbl = new System.Windows.Forms.Label();
             this.userLbl = new System.Windows.Forms.Label();
-            this.appStatusLbl = new System.Windows.Forms.Label();
             this.homePanel = new System.Windows.Forms.Panel();
             this.loginPanel = new System.Windows.Forms.Panel();
             this.forgotPasswordLink = new System.Windows.Forms.LinkLabel();
@@ -116,40 +113,19 @@
             this.authorToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.authorToolStripMenuItem.Text = "Author";
             // 
-            // startStopBtn
-            // 
-            this.startStopBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.startStopBtn.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.startStopBtn.Location = new System.Drawing.Point(68, 377);
-            this.startStopBtn.Name = "startStopBtn";
-            this.startStopBtn.Size = new System.Drawing.Size(151, 38);
-            this.startStopBtn.TabIndex = 1;
-            this.startStopBtn.Text = "Start";
-            this.startStopBtn.UseVisualStyleBackColor = true;
-            this.startStopBtn.Click += new System.EventHandler(this.startStopBtn_Click);
-            // 
             // userTitleLbl
             // 
             this.userTitleLbl.AutoSize = true;
-            this.userTitleLbl.Location = new System.Drawing.Point(6, 16);
+            this.userTitleLbl.Location = new System.Drawing.Point(12, 29);
             this.userTitleLbl.Name = "userTitleLbl";
             this.userTitleLbl.Size = new System.Drawing.Size(32, 13);
             this.userTitleLbl.TabIndex = 2;
             this.userTitleLbl.Text = "User:";
             // 
-            // appStatusTitleLbl
-            // 
-            this.appStatusTitleLbl.AutoSize = true;
-            this.appStatusTitleLbl.Location = new System.Drawing.Point(6, 67);
-            this.appStatusTitleLbl.Name = "appStatusTitleLbl";
-            this.appStatusTitleLbl.Size = new System.Drawing.Size(60, 13);
-            this.appStatusTitleLbl.TabIndex = 3;
-            this.appStatusTitleLbl.Text = "App status:";
-            // 
             // playingTitleLbl
             // 
             this.playingTitleLbl.AutoSize = true;
-            this.playingTitleLbl.Location = new System.Drawing.Point(6, 43);
+            this.playingTitleLbl.Location = new System.Drawing.Point(12, 74);
             this.playingTitleLbl.Name = "playingTitleLbl";
             this.playingTitleLbl.Size = new System.Drawing.Size(44, 13);
             this.playingTitleLbl.TabIndex = 4;
@@ -160,8 +136,6 @@
             this.groupBox1.BackColor = System.Drawing.Color.LightGray;
             this.groupBox1.Controls.Add(this.playingLbl);
             this.groupBox1.Controls.Add(this.userLbl);
-            this.groupBox1.Controls.Add(this.appStatusLbl);
-            this.groupBox1.Controls.Add(this.appStatusTitleLbl);
             this.groupBox1.Controls.Add(this.playingTitleLbl);
             this.groupBox1.Controls.Add(this.userTitleLbl);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System;
@@ -174,7 +148,7 @@
             // playingLbl
             // 
             this.playingLbl.AutoSize = true;
-            this.playingLbl.Location = new System.Drawing.Point(56, 43);
+            this.playingLbl.Location = new System.Drawing.Point(76, 74);
             this.playingLbl.Name = "playingLbl";
             this.playingLbl.Size = new System.Drawing.Size(0, 13);
             this.playingLbl.TabIndex = 7;
@@ -182,18 +156,10 @@
             // userLbl
             // 
             this.userLbl.AutoSize = true;
-            this.userLbl.Location = new System.Drawing.Point(44, 16);
+            this.userLbl.Location = new System.Drawing.Point(79, 29);
             this.userLbl.Name = "userLbl";
             this.userLbl.Size = new System.Drawing.Size(0, 13);
             this.userLbl.TabIndex = 6;
-            // 
-            // appStatusLbl
-            // 
-            this.appStatusLbl.AutoSize = true;
-            this.appStatusLbl.Location = new System.Drawing.Point(72, 67);
-            this.appStatusLbl.Name = "appStatusLbl";
-            this.appStatusLbl.Size = new System.Drawing.Size(0, 13);
-            this.appStatusLbl.TabIndex = 5;
             // 
             // homePanel
             // 
@@ -305,7 +271,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.homePanel);
             this.Controls.Add(this.loginPanel);
-            this.Controls.Add(this.startStopBtn);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -332,12 +297,9 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fAQToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem authorToolStripMenuItem;
-        private System.Windows.Forms.Button startStopBtn;
         private System.Windows.Forms.Label userTitleLbl;
-        private System.Windows.Forms.Label appStatusTitleLbl;
         private System.Windows.Forms.Label playingTitleLbl;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label appStatusLbl;
         private System.Windows.Forms.Label userLbl;
         private System.Windows.Forms.Label playingLbl;
         private System.Windows.Forms.ToolStripMenuItem gamesToolStripMenuItem;

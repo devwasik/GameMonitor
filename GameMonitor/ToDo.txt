@@ -1,12 +1,4 @@
 ﻿
 
-Methods in user class to log hours of play time to db
-
-Set up db class so connection can be called from other classes and not have to get initialized each time
-
-Remove start stop button? Why not start logging hours right when user logs in
-
-
-
 
 Thread exception -- https://stackoverflow.com/questions/5516111/how-to-read-combobox-from-a-thread-other-than-the-thread-it-was-created-on

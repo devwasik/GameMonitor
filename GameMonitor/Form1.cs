@@ -1,13 +1,4 @@
-﻿/*
- * Copyright 2017 Nick Wasik
- *
- * NOTICE:  All information contained herein is, and remains the property of Nick Wasik
- * and his suppliers, if any.  The intellectual and technical concepts contained herein are
- * proprietary to Nick Wasik and his suppliers and may be covered by U.S. and Foreign
- * Patents, patents in process, and are protected by trade secret or copyright law. Dissemination
- * of this information or reproduction of this material is strictly forbidden unless prior written
- * permission is obtained from Nick Wasik.
- */
+﻿
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -48,6 +39,7 @@ namespace GameMonitor
             //Make sure we start with only login panel visible
             InitializeAppView();
 
+            //p.CheckAppVersion(); -- see if app is on latest version
             //Refresh UI every 5 seconds
             tc.TheTimeChanged += new TimerClass.TimerTickHandler(IntervalHasPassed);
             lh.TheTimeChanged += new TimerClass.TimerTickHandler(LogHoursInterval);
@@ -68,6 +60,7 @@ namespace GameMonitor
         {
             ResetView();
             loginPanel.Visible = true;
+
         }
 
         //Hide all panels
@@ -89,7 +82,6 @@ namespace GameMonitor
 
             if (user.Login(user.Username, user.Password))
             {
-                MessageBox.Show("Login Success");
                 ResetView();
                 userLbl.Text = user.Username;
                 homePanel.Visible = true;
@@ -100,6 +92,7 @@ namespace GameMonitor
             }
 
         }
+
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -113,41 +106,54 @@ namespace GameMonitor
 
         protected void LogHoursInterval(string newTime)
         {
-            WebRequest request = WebRequest.Create("http://www.devwasik.net/logHours.php");
-            // Set the Method property of the request to POST.
-            request.Method = "POST";
-            // Create POST data and convert it to a byte array.
-            string postData = "username="+user.Username + "&currentGame="+p.CurrentGame;
-            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
-            // Set the ContentType property of the WebRequest.
-            request.ContentType = "application/x-www-form-urlencoded";
-            // Set the ContentLength property of the WebRequest.
-            request.ContentLength = byteArray.Length;
-            // Get the request stream.
-            Stream dataStream = request.GetRequestStream();
-            // Write the data to the request stream.
-            dataStream.Write(byteArray, 0, byteArray.Length);
-            // Close the Stream object.
-            dataStream.Close();
-            // Get the response.
-            WebResponse response = request.GetResponse();
-            // Get the stream containing content returned by the server.
-            dataStream = response.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
-            StreamReader reader = new StreamReader(dataStream);
-            // Read the content.
-            string responseFromServer = reader.ReadToEnd();
-            
+            //Make sure username is set
+            if (user.Username != "")
+            {
+                WebRequest request = WebRequest.Create("http://www.devwasik.net/logHours.php");
+                // Set the Method property of the request to POST.
+                request.Method = "POST";
+                // Create POST data and convert it to a byte array.
+                string postData = "username=" + user.Username + "&currentGame=" + p.CurrentGame;
+                byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+                // Set the ContentType property of the WebRequest.
+                request.ContentType = "application/x-www-form-urlencoded";
+                // Set the ContentLength property of the WebRequest.
+                request.ContentLength = byteArray.Length;
+                // Get the request stream.
+                Stream dataStream = request.GetRequestStream();
+                // Write the data to the request stream.
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                // Close the Stream object.
+                dataStream.Close();
+                // Get the response.
+                WebResponse response = request.GetResponse();
+                // Get the stream containing content returned by the server.
+                dataStream = response.GetResponseStream();
+                // Open the stream using a StreamReader for easy access.
+                StreamReader reader = new StreamReader(dataStream);
+                // Read the content.
+                string responseFromServer = reader.ReadToEnd();
 
-            // Clean up the streams.
-            reader.Close();
-            dataStream.Close();
-            response.Close();
+
+                // Clean up the streams.
+                reader.Close();
+                dataStream.Close();
+                response.Close();
+            }
+            
         }
 
         private void signUpLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://devwasik.net/register.php/");
+        }
+
+        private void logOffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            user.Username = "";
+            ResetView();
+            loginPanel.Visible = true;
+            
         }
     }
 }

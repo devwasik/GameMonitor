@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameMonitor));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +53,7 @@
             this.loginUserlbl = new System.Windows.Forms.Label();
             this.loginBtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.homePanel.SuspendLayout();
@@ -74,15 +77,23 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logOffToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // logOffToolStripMenuItem
+            // 
+            this.logOffToolStripMenuItem.Name = "logOffToolStripMenuItem";
+            this.logOffToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logOffToolStripMenuItem.Text = "Log Off";
+            this.logOffToolStripMenuItem.Click += new System.EventHandler(this.logOffToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -116,6 +127,7 @@
             // userTitleLbl
             // 
             this.userTitleLbl.AutoSize = true;
+            this.userTitleLbl.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.userTitleLbl.Location = new System.Drawing.Point(12, 29);
             this.userTitleLbl.Name = "userTitleLbl";
             this.userTitleLbl.Size = new System.Drawing.Size(32, 13);
@@ -125,6 +137,7 @@
             // playingTitleLbl
             // 
             this.playingTitleLbl.AutoSize = true;
+            this.playingTitleLbl.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.playingTitleLbl.Location = new System.Drawing.Point(12, 74);
             this.playingTitleLbl.Name = "playingTitleLbl";
             this.playingTitleLbl.Size = new System.Drawing.Size(44, 13);
@@ -148,6 +161,7 @@
             // playingLbl
             // 
             this.playingLbl.AutoSize = true;
+            this.playingLbl.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.playingLbl.Location = new System.Drawing.Point(76, 74);
             this.playingLbl.Name = "playingLbl";
             this.playingLbl.Size = new System.Drawing.Size(0, 13);
@@ -156,6 +170,7 @@
             // userLbl
             // 
             this.userLbl.AutoSize = true;
+            this.userLbl.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.userLbl.Location = new System.Drawing.Point(79, 29);
             this.userLbl.Name = "userLbl";
             this.userLbl.Size = new System.Drawing.Size(0, 13);
@@ -228,6 +243,7 @@
             // loginPasswordlbl
             // 
             this.loginPasswordlbl.AutoSize = true;
+            this.loginPasswordlbl.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.loginPasswordlbl.Location = new System.Drawing.Point(28, 113);
             this.loginPasswordlbl.Name = "loginPasswordlbl";
             this.loginPasswordlbl.Size = new System.Drawing.Size(68, 13);
@@ -237,6 +253,7 @@
             // loginUserlbl
             // 
             this.loginUserlbl.AutoSize = true;
+            this.loginUserlbl.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.loginUserlbl.Location = new System.Drawing.Point(28, 68);
             this.loginUserlbl.Name = "loginUserlbl";
             this.loginUserlbl.Size = new System.Drawing.Size(70, 13);
@@ -245,6 +262,7 @@
             // 
             // loginBtn
             // 
+            this.loginBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.loginBtn.Location = new System.Drawing.Point(88, 170);
             this.loginBtn.Name = "loginBtn";
             this.loginBtn.Size = new System.Drawing.Size(75, 23);
@@ -261,6 +279,14 @@
             this.pictureBox1.Size = new System.Drawing.Size(207, 130);
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.BalloonTipText = "Gametime Monitor is still running in the background...";
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
             // GameMonitor
             // 
@@ -314,6 +340,9 @@
         private System.Windows.Forms.LinkLabel signUpLink;
         private System.Windows.Forms.LinkLabel forgotPasswordLink;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem logOffToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+ 
     }
 }
 

@@ -1,14 +1,4 @@
-﻿/*
- * Copyright 2017 Nick Wasik
- *
- * NOTICE:  All information contained herein is, and remains the property of Nick Wasik
- * and his suppliers, if any.  The intellectual and technical concepts contained herein are
- * proprietary to Nick Wasik and his suppliers and may be covered by U.S. and Foreign
- * Patents, patents in process, and are protected by trade secret or copyright law. Dissemination
- * of this information or reproduction of this material is strictly forbidden unless prior written
- * permission is obtained from Nick Wasik.
- */
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Timers;
@@ -66,16 +56,6 @@ namespace GameMonitor {
 
         #endregion
 
-        /// <summary>
-        /// Default constructor. Here we will load game list text file via constructor and eventually a user file here as well
-        /// </summary>
-     
-
-		/// <summary>
-		/// Loads the list of gameProcesses from the game list file.
-		/// </summary>
-		/// <returns></returns>
-		
 		/// <summary>
 		/// Checks each running process to match to our user's game list.
 		/// </summary>
@@ -96,7 +76,7 @@ namespace GameMonitor {
 					if( process.ProcessName == GameManager.GameProcesses[g] ) {
 						currentGame = GameManager.GameName[g];      
 						playingGame = true;
-                        StartLoggingHours();
+                       
 						break;
 					}
 
@@ -124,10 +104,7 @@ namespace GameMonitor {
 		}
 
         //Submit to server every 1min in case app crashes during a long session
-        private void StartLoggingHours()
-        {
-            
-        }
+       
         //StartLoggingHours() When a game instance is detected beging collecting data
         //CheckIfPlayedBefore() Called within start logging hours - query db and see if played before, if not insert game
 

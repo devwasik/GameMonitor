@@ -152,6 +152,9 @@ namespace GameMonitor
         {
             user.Username = "";
             ResetView();
+            //Reset previous values in username/textbox or they will still be filled in after logoff
+            loginUserTxtBox.Text = "";
+            loginPasswordTxtBox.Text = "";
             loginPanel.Visible = true;
             
         }

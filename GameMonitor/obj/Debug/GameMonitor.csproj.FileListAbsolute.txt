@@ -51,3 +51,6 @@ C:\Users\Nick\Desktop\GameMonitor\GameMonitor\bin\Debug\EntityFramework.SqlServe
 C:\Users\Nick\Documents\GameMonitor\GameMonitor\bin\Debug\HtmlAgilityPack.dll
 C:\Users\Nick\Documents\GameMonitor\GameMonitor\bin\Debug\HtmlAgilityPack.pdb
 C:\Users\Nick\Documents\GameMonitor\GameMonitor\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Nick\Desktop\GameMonitor\GameMonitor\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Nick\Desktop\GameMonitor\GameMonitor\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Nick\Desktop\GameMonitor\GameMonitor\bin\Debug\HtmlAgilityPack.xml

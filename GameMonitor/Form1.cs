@@ -42,8 +42,10 @@ namespace GameMonitor
             //p.CheckAppVersion(); -- see if app is on latest version
             //Refresh UI every 5 seconds
             tc.TheTimeChanged += new TimerClass.TimerTickHandler(IntervalHasPassed);
-            lh.TheTimeChanged += new TimerClass.TimerTickHandler(LogHoursInterval);
+            lh.TheTimeChanged += new TimerClass.TimerTickHandler(LogHours);
         }
+
+      
 
         public void ExceptionHandler(string message, string stackTrace)
         {
@@ -99,49 +101,18 @@ namespace GameMonitor
             Application.Exit();
         }
 
+        //Update UI every 5 seconds
         protected void IntervalHasPassed(string newTime)
         {
             this.Invoke(new MethodInvoker(delegate () { playingLbl.Text = p.CurrentGame; }));
         }
 
-        protected void LogHoursInterval(string newTime)
+        //Log hours every minute
+        protected void LogHours(string z)
         {
-            //Make sure username is set
-            if (user.Username != "")
-            {
-                WebRequest request = WebRequest.Create("http://www.devwasik.net/logHours.php");
-                // Set the Method property of the request to POST.
-                request.Method = "POST";
-                // Create POST data and convert it to a byte array.
-                string postData = "username=" + user.Username + "&currentGame=" + p.CurrentGame;
-                byte[] byteArray = Encoding.UTF8.GetBytes(postData);
-                // Set the ContentType property of the WebRequest.
-                request.ContentType = "application/x-www-form-urlencoded";
-                // Set the ContentLength property of the WebRequest.
-                request.ContentLength = byteArray.Length;
-                // Get the request stream.
-                Stream dataStream = request.GetRequestStream();
-                // Write the data to the request stream.
-                dataStream.Write(byteArray, 0, byteArray.Length);
-                // Close the Stream object.
-                dataStream.Close();
-                // Get the response.
-                WebResponse response = request.GetResponse();
-                // Get the stream containing content returned by the server.
-                dataStream = response.GetResponseStream();
-                // Open the stream using a StreamReader for easy access.
-                StreamReader reader = new StreamReader(dataStream);
-                // Read the content.
-                string responseFromServer = reader.ReadToEnd();
-
-
-                // Clean up the streams.
-                reader.Close();
-                dataStream.Close();
-                response.Close();
-            }
-            
+            this.Invoke(new MethodInvoker(delegate () { p.LogHoursInterval("z", user.Username); } ));
         }
+       
 
         private void signUpLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -152,9 +123,91 @@ namespace GameMonitor
         {
             user.Username = "";
             ResetView();
+            loginUserTxtBox.Text = "";
+            loginPasswordTxtBox.Text = "";
             loginPanel.Visible = true;
             
         }
+        private void MinimzedTray()
+        {
+            notifyIcon1.Visible = true;
+            notifyIcon1.Icon = SystemIcons.Application;
+
+            notifyIcon1.BalloonTipText = "Minimized";
+            notifyIcon1.BalloonTipTitle = "Your Application is Running in BackGround";
+            notifyIcon1.ShowBalloonTip(500);
+
+        }
+
+        private void MaxmizedFromTray()
+        {
+            notifyIcon1.Visible = true;
+            notifyIcon1.BalloonTipText = "Maximized";
+            notifyIcon1.BalloonTipTitle = "Application is Running in Foreground";
+            notifyIcon1.ShowBalloonTip(500);
+
+
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                MinimzedTray();
+            }
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+
+                MaxmizedFromTray();
+            }
+        }
+
+        //not working
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+           // Form1 frm = new Form1();
+         //   frm.Show();
+            MaxmizedFromTray();
+
+
+        }
+
+        //not working
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+        }
+
+ 
+        //not working
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon1.BalloonTipText = "Normal";
+            notifyIcon1.ShowBalloonTip(500);
+        }
+
+        //kind of working? bubble notification comes up but app closes out when exited
+        private void Form_Closing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                MinimzedTray();
+
+            }
+
+        }
+        //not working
+        private void Form_Closed(object sender, FormClosedEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.ApplicationExitCall)
+            {
+                MinimzedTray();
+
+            }
+        }
+        
     }
 }
 

@@ -86,7 +86,7 @@
             // logOffToolStripMenuItem
             // 
             this.logOffToolStripMenuItem.Name = "logOffToolStripMenuItem";
-            this.logOffToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logOffToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.logOffToolStripMenuItem.Text = "Log Off";
             this.logOffToolStripMenuItem.Click += new System.EventHandler(this.logOffToolStripMenuItem_Click);
             // 
@@ -303,6 +303,8 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "GameMonitor";
             this.Text = "GameMonitor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

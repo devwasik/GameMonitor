@@ -54,6 +54,7 @@
             this.loginBtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notifyIcon2 = new System.Windows.Forms.NotifyIcon(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.homePanel.SuspendLayout();
@@ -287,6 +288,13 @@
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // notifyIcon2
+            // 
+            this.notifyIcon2.Text = "notifyIcon2";
+            this.notifyIcon2.Visible = true;
             // 
             // GameMonitor
             // 
@@ -305,6 +313,7 @@
             this.Text = "GameMonitor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Closing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closed);
+            this.DoubleClick += new System.EventHandler(this.notifyIcon1_Click);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -344,7 +353,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem logOffToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
- 
+        private System.Windows.Forms.NotifyIcon notifyIcon2;
     }
 }
 

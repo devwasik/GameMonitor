@@ -9,8 +9,6 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using HtmlAgilityPack;
 
-//This class will be used for the gameProcesses.txt file
-//Will allow user to edit, add, and remove items
 
 namespace GameMonitor
 {

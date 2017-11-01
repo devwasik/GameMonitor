@@ -17,20 +17,20 @@ namespace GameMonitor
 
         /// <summary>Program processes and logic .</summary>
 		ProgramLogic p = new ProgramLogic();
-        /// <summary> User file manager.</summary>
+
+        /// <summary> User manager.</summary>
         User user = new User();
+
         /// <summary>Game manager.</summary>
         GameManager gm = new GameManager();
 
+        /// <summary>
+        /// Timer class manages process checking, time upload, UI refreshes/// </summary>
+        /// 1st timer refreshes UI and second is used to upload game time every 1 min
         TimerClass tc = new TimerClass();
-        
-        //Overloaded TC constructor accepts a string 
-        TimerClass lh = new TimerClass("placeholder"); 
+        TimerClass lh = new TimerClass("x"); 
         
 
-        /// <summary>
-        /// Default constructor. Initialize the form components and adjust component properties.
-        /// </summary>
         public GameMonitor()
         {
 
@@ -40,8 +40,11 @@ namespace GameMonitor
             InitializeAppView();
 
             //p.CheckAppVersion(); -- see if app is on latest version
+
             //Refresh UI every 5 seconds
             tc.TheTimeChanged += new TimerClass.TimerTickHandler(IntervalHasPassed);
+
+            //Log hours every 1 minute 
             lh.TheTimeChanged += new TimerClass.TimerTickHandler(LogHours);
         }
 
@@ -57,12 +60,11 @@ namespace GameMonitor
         #region Event Handlers
 
   
-
+        //Set up initial form view
         private void InitializeAppView()
         {
             ResetView();
             loginPanel.Visible = true;
-
         }
 
         //Hide all panels
@@ -82,6 +84,7 @@ namespace GameMonitor
             user.Username = loginUserTxtBox.Text;
             user.Password = loginPasswordTxtBox.Text;
 
+            //Pass in values to boolean method in user class = if true log user in
             if (user.Login(user.Username, user.Password))
             {
                 ResetView();
@@ -135,45 +138,33 @@ namespace GameMonitor
 
             notifyIcon1.BalloonTipText = "Minimized";
             notifyIcon1.BalloonTipTitle = "Your Application is Running in BackGround";
-            notifyIcon1.ShowBalloonTip(500);
+            notifyIcon1.ShowBalloonTip(10);
+            
 
         }
 
-        private void MaxmizedFromTray()
-        {
-            notifyIcon1.Visible = true;
-            notifyIcon1.BalloonTipText = "Maximized";
-            notifyIcon1.BalloonTipTitle = "Application is Running in Foreground";
-            notifyIcon1.ShowBalloonTip(500);
-
-
-        }
-
+        //
         private void Form1_Resize(object sender, EventArgs e)
         {
             if (FormWindowState.Minimized == this.WindowState)
             {
                 MinimzedTray();
+                //add context menu here for right click menu options n tray icon
             }
             else if (FormWindowState.Normal == this.WindowState)
             {
 
-                MaxmizedFromTray();
+             
             }
         }
 
-        //not working
+        //Working
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
-           // Form1 frm = new Form1();
-         //   frm.Show();
-            MaxmizedFromTray();
-
-
         }
 
-        //not working
+        //Working
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
@@ -188,13 +179,23 @@ namespace GameMonitor
             notifyIcon1.ShowBalloonTip(500);
         }
 
-        //kind of working? bubble notification comes up but app closes out when exited
+        //not working -  bubble notification comes up but app closes out when exited
         private void Form_Closing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
+               
                 MinimzedTray();
+                
 
+            }
+
+            if (e.CloseReason == CloseReason.ApplicationExitCall)
+            {
+                e.Cancel = true;
+                MinimzedTray();
+                
+                
             }
 
         }
